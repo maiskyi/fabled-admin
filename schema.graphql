@@ -167,6 +167,46 @@ input FeedbackCreateInput {
   createdAt: DateTime
 }
 
+type Story {
+  id: ID!
+  uid: String
+  title: String
+}
+
+input StoryWhereUniqueInput {
+  id: ID
+}
+
+input StoryWhereInput {
+  AND: [StoryWhereInput!]
+  OR: [StoryWhereInput!]
+  NOT: [StoryWhereInput!]
+  id: IDFilter
+  uid: StringFilter
+  title: StringFilter
+}
+
+input StoryOrderByInput {
+  id: OrderDirection
+  uid: OrderDirection
+  title: OrderDirection
+}
+
+input StoryUpdateInput {
+  uid: String
+  title: String
+}
+
+input StoryUpdateArgs {
+  where: StoryWhereUniqueInput!
+  data: StoryUpdateInput!
+}
+
+input StoryCreateInput {
+  uid: String
+  title: String
+}
+
 """
 The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
 """
@@ -185,6 +225,12 @@ type Mutation {
   updateFeedbacks(data: [FeedbackUpdateArgs!]!): [Feedback]
   deleteFeedback(where: FeedbackWhereUniqueInput!): Feedback
   deleteFeedbacks(where: [FeedbackWhereUniqueInput!]!): [Feedback]
+  createStory(data: StoryCreateInput!): Story
+  createStories(data: [StoryCreateInput!]!): [Story]
+  updateStory(where: StoryWhereUniqueInput!, data: StoryUpdateInput!): Story
+  updateStories(data: [StoryUpdateArgs!]!): [Story]
+  deleteStory(where: StoryWhereUniqueInput!): Story
+  deleteStories(where: [StoryWhereUniqueInput!]!): [Story]
   endSession: Boolean!
   authenticateUserWithPassword(email: String!, password: String!): UserAuthenticationWithPasswordResult
   createInitialUser(data: CreateInitialUserInput!): UserAuthenticationWithPasswordSuccess!
@@ -214,6 +260,9 @@ type Query {
   feedback(where: FeedbackWhereUniqueInput!): Feedback
   feedbacks(where: FeedbackWhereInput! = {}, orderBy: [FeedbackOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: FeedbackWhereUniqueInput): [Feedback!]
   feedbacksCount(where: FeedbackWhereInput! = {}): Int
+  story(where: StoryWhereUniqueInput!): Story
+  stories(where: StoryWhereInput! = {}, orderBy: [StoryOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: StoryWhereUniqueInput): [Story!]
+  storiesCount(where: StoryWhereInput! = {}): Int
   keystone: KeystoneMeta!
   authenticatedItem: AuthenticatedItem
 }

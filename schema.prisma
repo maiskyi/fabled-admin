@@ -25,3 +25,11 @@ model Feedback {
   comment   String    @default("")
   createdAt DateTime? @default(now())
 }
+
+model Story {
+  id    String @id @default(cuid())
+  uid   String @default("")
+  title String @default("")
+
+  @@index([title])
+}
