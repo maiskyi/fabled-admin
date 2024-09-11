@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@keystone-6/auth": "^8.0.0",
+    "@keystone-6/cloudinary": "^8.0.0",
     "@keystone-6/core": "^6.0.0",
     "@keystone-6/fields-document": "^9.0.0",
     "lodash": "^4.17.21",

@@ -27,9 +27,17 @@ model Feedback {
 }
 
 model Story {
-  id    String @id @default(cuid())
-  uid   String @default("")
-  title String @default("")
+  id             String    @id @default(cuid())
+  firebaseUserId String    @default("")
+  title          String    @default("")
+  image          String?
+  readTime       Int
+  status         String    @default("[\"initialized\"]")
+  isReady        Boolean   @default(false)
+  createdAt      DateTime? @default(now())
+  contentPrompt  String    @default("")
+  imagePrompt    String    @default("")
+  message        String    @default("")
 
   @@index([title])
 }
