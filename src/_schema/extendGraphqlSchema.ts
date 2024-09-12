@@ -7,7 +7,7 @@ export const extendGraphqlSchema = (schema: GraphQLSchema) =>
     schemas: [schema],
     typeDefs: `
       type Subscription {
-        storyUpdated: Story
+        storyUpdated(id: ID): Story
       }
     `,
     resolvers: {

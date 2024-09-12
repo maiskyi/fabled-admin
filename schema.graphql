@@ -504,5 +504,5 @@ enum KeystoneAdminUISortDirection {
 }
 
 type Subscription {
-  storyUpdated: Story
+  storyUpdated(id: ID): Story
 }
