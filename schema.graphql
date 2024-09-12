@@ -502,3 +502,7 @@ enum KeystoneAdminUISortDirection {
   ASC
   DESC
 }
+
+type Subscription {
+  storyUpdated: Story
+}
