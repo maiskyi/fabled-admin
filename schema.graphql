@@ -171,6 +171,7 @@ type Story {
   id: ID!
   firebaseUserId: String
   title: String
+  content: String
   image: CloudinaryImage_File
   readTime: Int
   status: [StoryStatusType!]
@@ -247,6 +248,7 @@ input StoryWhereInput {
   id: IDFilter
   firebaseUserId: StringFilter
   title: StringFilter
+  content: StringFilter
   readTime: IntFilter
   isReady: BooleanFilter
   createdAt: DateTimeNullableFilter
@@ -264,6 +266,7 @@ input StoryOrderByInput {
   id: OrderDirection
   firebaseUserId: OrderDirection
   title: OrderDirection
+  content: OrderDirection
   readTime: OrderDirection
   isReady: OrderDirection
   createdAt: OrderDirection
@@ -275,6 +278,7 @@ input StoryOrderByInput {
 input StoryUpdateInput {
   firebaseUserId: String
   title: String
+  content: String
   image: Upload
   readTime: Int
   status: [StoryStatusType!]
@@ -296,6 +300,7 @@ input StoryUpdateArgs {
 input StoryCreateInput {
   firebaseUserId: String
   title: String
+  content: String
   image: Upload
   readTime: Int
   status: [StoryStatusType!]

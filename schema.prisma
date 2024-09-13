@@ -30,6 +30,7 @@ model Story {
   id             String    @id @default(cuid())
   firebaseUserId String    @default("")
   title          String    @default("")
+  content        String    @default("")
   image          String?
   readTime       Int
   status         String    @default("[\"initialized\"]")
@@ -40,4 +41,5 @@ model Story {
   message        String    @default("")
 
   @@index([title])
+  @@index([content])
 }

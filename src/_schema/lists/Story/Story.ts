@@ -9,6 +9,7 @@ import {
 } from "@keystone-6/core/fields";
 import { cloudinaryImage } from "@keystone-6/cloudinary";
 import { READ_TIME_OPTIONS, STATUS_OPTIONS } from "./Story.const";
+import { hooks } from "./hooks";
 
 export const Story = list({
   access: allowAll,
@@ -28,6 +29,18 @@ export const Story = list({
       ui: {
         createView: {
           fieldMode: "hidden",
+        },
+      },
+    }),
+    content: text({
+      isIndexed: true,
+      ui: {
+        displayMode: "textarea",
+        createView: {
+          fieldMode: "hidden",
+        },
+        itemView: {
+          fieldMode: "read",
         },
       },
     }),
@@ -113,4 +126,5 @@ export const Story = list({
       },
     }),
   },
+  hooks: hooks,
 });
