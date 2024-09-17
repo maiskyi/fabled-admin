@@ -3,8 +3,9 @@ import { ListHooks } from "@keystone-6/core/types";
 import { Lists } from ".keystone/types";
 import { StoryExceptionCode } from "../../Story.types";
 import { StoryStatus } from "./services/StoryStatus";
-import { generateContent } from "./flows/generateContent";
 import { StoryException } from "./services/StoryException";
+import { generateContent } from "./flows/generateContent";
+import { generateImage } from "./flows/generateImage";
 
 export const afterOperation: ListHooks<Lists.Story.TypeInfo> = {
   afterOperation: {
@@ -20,16 +21,30 @@ export const afterOperation: ListHooks<Lists.Story.TypeInfo> = {
             },
           });
 
-          const { title, content } = await generateContent({
+          const content = await generateContent({
             prompt: item.contentPrompt,
           });
 
           await context.db.Story.updateOne({
             where: { id: item.id },
             data: {
-              title,
-              content,
+              ...content,
               status: status.next("imageInProgress").value,
+            },
+          });
+
+          const image = await generateImage({
+            title: content.title,
+            prompt: item.imagePrompt,
+          });
+
+          await context.db.Story.updateOne({
+            where: { id: item.id },
+            data: {
+              image: {
+                upload: "",
+              },
+              status: status.next("success").value,
             },
           });
         } catch (error) {
