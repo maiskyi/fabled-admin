@@ -424,6 +424,104 @@ input CharacterCreateInput {
   createdAt: DateTime
 }
 
+type MoralLesson {
+  id: ID!
+  title: String
+  description: String
+  language: String
+  createdAt: DateTime
+}
+
+input MoralLessonWhereUniqueInput {
+  id: ID
+}
+
+input MoralLessonWhereInput {
+  AND: [MoralLessonWhereInput!]
+  OR: [MoralLessonWhereInput!]
+  NOT: [MoralLessonWhereInput!]
+  id: IDFilter
+  title: StringFilter
+  description: StringFilter
+  language: StringFilter
+  createdAt: DateTimeNullableFilter
+}
+
+input MoralLessonOrderByInput {
+  id: OrderDirection
+  title: OrderDirection
+  description: OrderDirection
+  language: OrderDirection
+  createdAt: OrderDirection
+}
+
+input MoralLessonUpdateInput {
+  title: String
+  description: String
+  language: String
+  createdAt: DateTime
+}
+
+input MoralLessonUpdateArgs {
+  where: MoralLessonWhereUniqueInput!
+  data: MoralLessonUpdateInput!
+}
+
+input MoralLessonCreateInput {
+  title: String
+  description: String
+  language: String
+  createdAt: DateTime
+}
+
+type PlaceOfEvent {
+  id: ID!
+  title: String
+  image: CloudinaryImage_File
+  language: String
+  createdAt: DateTime
+}
+
+input PlaceOfEventWhereUniqueInput {
+  id: ID
+}
+
+input PlaceOfEventWhereInput {
+  AND: [PlaceOfEventWhereInput!]
+  OR: [PlaceOfEventWhereInput!]
+  NOT: [PlaceOfEventWhereInput!]
+  id: IDFilter
+  title: StringFilter
+  language: StringFilter
+  createdAt: DateTimeNullableFilter
+}
+
+input PlaceOfEventOrderByInput {
+  id: OrderDirection
+  title: OrderDirection
+  language: OrderDirection
+  createdAt: OrderDirection
+}
+
+input PlaceOfEventUpdateInput {
+  title: String
+  image: Upload
+  language: String
+  createdAt: DateTime
+}
+
+input PlaceOfEventUpdateArgs {
+  where: PlaceOfEventWhereUniqueInput!
+  data: PlaceOfEventUpdateInput!
+}
+
+input PlaceOfEventCreateInput {
+  title: String
+  image: Upload
+  language: String
+  createdAt: DateTime
+}
+
 """
 The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
 """
@@ -460,6 +558,18 @@ type Mutation {
   updateCharacters(data: [CharacterUpdateArgs!]!): [Character]
   deleteCharacter(where: CharacterWhereUniqueInput!): Character
   deleteCharacters(where: [CharacterWhereUniqueInput!]!): [Character]
+  createMoralLesson(data: MoralLessonCreateInput!): MoralLesson
+  createMoralLessons(data: [MoralLessonCreateInput!]!): [MoralLesson]
+  updateMoralLesson(where: MoralLessonWhereUniqueInput!, data: MoralLessonUpdateInput!): MoralLesson
+  updateMoralLessons(data: [MoralLessonUpdateArgs!]!): [MoralLesson]
+  deleteMoralLesson(where: MoralLessonWhereUniqueInput!): MoralLesson
+  deleteMoralLessons(where: [MoralLessonWhereUniqueInput!]!): [MoralLesson]
+  createPlaceOfEvent(data: PlaceOfEventCreateInput!): PlaceOfEvent
+  createPlaceOfEvents(data: [PlaceOfEventCreateInput!]!): [PlaceOfEvent]
+  updatePlaceOfEvent(where: PlaceOfEventWhereUniqueInput!, data: PlaceOfEventUpdateInput!): PlaceOfEvent
+  updatePlaceOfEvents(data: [PlaceOfEventUpdateArgs!]!): [PlaceOfEvent]
+  deletePlaceOfEvent(where: PlaceOfEventWhereUniqueInput!): PlaceOfEvent
+  deletePlaceOfEvents(where: [PlaceOfEventWhereUniqueInput!]!): [PlaceOfEvent]
   endSession: Boolean!
   authenticateUserWithPassword(email: String!, password: String!): UserAuthenticationWithPasswordResult
   createInitialUser(data: CreateInitialUserInput!): UserAuthenticationWithPasswordSuccess!
@@ -498,6 +608,12 @@ type Query {
   character(where: CharacterWhereUniqueInput!): Character
   characters(where: CharacterWhereInput! = {}, orderBy: [CharacterOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: CharacterWhereUniqueInput): [Character!]
   charactersCount(where: CharacterWhereInput! = {}): Int
+  moralLesson(where: MoralLessonWhereUniqueInput!): MoralLesson
+  moralLessons(where: MoralLessonWhereInput! = {}, orderBy: [MoralLessonOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: MoralLessonWhereUniqueInput): [MoralLesson!]
+  moralLessonsCount(where: MoralLessonWhereInput! = {}): Int
+  placeOfEvent(where: PlaceOfEventWhereUniqueInput!): PlaceOfEvent
+  placeOfEvents(where: PlaceOfEventWhereInput! = {}, orderBy: [PlaceOfEventOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: PlaceOfEventWhereUniqueInput): [PlaceOfEvent!]
+  placeOfEventsCount(where: PlaceOfEventWhereInput! = {}): Int
   keystone: KeystoneMeta!
   authenticatedItem: AuthenticatedItem
 }

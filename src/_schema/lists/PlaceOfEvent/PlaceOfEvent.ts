@@ -4,18 +4,10 @@ import { text, timestamp, select } from "@keystone-6/core/fields";
 import { cloudinaryImage } from "@keystone-6/cloudinary";
 import { LANGUAGE_OPTIONS } from "../lists.const";
 
-export const Character = list({
+export const PlaceOfEvent = list({
   access: allowAll,
   fields: {
     title: text({
-      validation: {
-        isRequired: true,
-      },
-    }),
-    description: text({
-      ui: {
-        displayMode: "textarea",
-      },
       validation: {
         isRequired: true,
       },
