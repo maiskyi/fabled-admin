@@ -5,6 +5,7 @@ import { Inquiry } from "./Inquiry";
 import { Character } from "./Character";
 import { MoralLesson } from "./MoralLesson";
 import { PlaceOfEvent } from "./PlaceOfEvent";
+import { Prompt } from "./Prompt";
 
 export const lists = {
   User,
@@ -14,4 +15,5 @@ export const lists = {
   Character,
   MoralLesson,
   PlaceOfEvent,
+  Prompt,
 };

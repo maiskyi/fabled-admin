@@ -570,6 +570,77 @@ input PlaceOfEventCreateInput {
   createdAt: DateTime
 }
 
+type Prompt {
+  id: ID!
+  title: String
+  message: String
+  textPrompt: String
+  imagePrompt: String
+  language: PromptLanguageType
+  createdAt: DateTime
+}
+
+enum PromptLanguageType {
+  en
+}
+
+input PromptWhereUniqueInput {
+  id: ID
+}
+
+input PromptWhereInput {
+  AND: [PromptWhereInput!]
+  OR: [PromptWhereInput!]
+  NOT: [PromptWhereInput!]
+  id: IDFilter
+  title: StringFilter
+  message: StringFilter
+  textPrompt: StringFilter
+  imagePrompt: StringFilter
+  language: PromptLanguageTypeNullableFilter
+  createdAt: DateTimeNullableFilter
+}
+
+input PromptLanguageTypeNullableFilter {
+  equals: PromptLanguageType
+  in: [PromptLanguageType!]
+  notIn: [PromptLanguageType!]
+  not: PromptLanguageTypeNullableFilter
+}
+
+input PromptOrderByInput {
+  id: OrderDirection
+  title: OrderDirection
+  message: OrderDirection
+  textPrompt: OrderDirection
+  imagePrompt: OrderDirection
+  language: OrderDirection
+  createdAt: OrderDirection
+}
+
+input PromptUpdateInput {
+  title: String
+  message: String
+  textPrompt: String
+  imagePrompt: String
+  language: PromptLanguageType
+  createdAt: DateTime
+}
+
+input PromptUpdateArgs {
+  where: PromptWhereUniqueInput!
+  data: PromptUpdateInput!
+}
+
+input PromptCreateInput {
+  title: String
+  message: String
+  textPrompt: String
+  imagePrompt: String
+  language: PromptLanguageType
+  createdAt: DateTime
+}
+
 """
 The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
 """
@@ -618,6 +689,12 @@ type Mutation {
   updatePlaceOfEvents(data: [PlaceOfEventUpdateArgs!]!): [PlaceOfEvent]
   deletePlaceOfEvent(where: PlaceOfEventWhereUniqueInput!): PlaceOfEvent
   deletePlaceOfEvents(where: [PlaceOfEventWhereUniqueInput!]!): [PlaceOfEvent]
+  createPrompt(data: PromptCreateInput!): Prompt
+  createPrompts(data: [PromptCreateInput!]!): [Prompt]
+  updatePrompt(where: PromptWhereUniqueInput!, data: PromptUpdateInput!): Prompt
+  updatePrompts(data: [PromptUpdateArgs!]!): [Prompt]
+  deletePrompt(where: PromptWhereUniqueInput!): Prompt
+  deletePrompts(where: [PromptWhereUniqueInput!]!): [Prompt]
   endSession: Boolean!
   authenticateUserWithPassword(email: String!, password: String!): UserAuthenticationWithPasswordResult
   createInitialUser(data: CreateInitialUserInput!): UserAuthenticationWithPasswordSuccess!
@@ -662,6 +739,9 @@ type Query {
   placeOfEvent(where: PlaceOfEventWhereUniqueInput!): PlaceOfEvent
   placeOfEvents(where: PlaceOfEventWhereInput! = {}, orderBy: [PlaceOfEventOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: PlaceOfEventWhereUniqueInput): [PlaceOfEvent!]
   placeOfEventsCount(where: PlaceOfEventWhereInput! = {}): Int
+  prompt(where: PromptWhereUniqueInput!): Prompt
+  prompts(where: PromptWhereInput! = {}, orderBy: [PromptOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: PromptWhereUniqueInput): [Prompt!]
+  promptsCount(where: PromptWhereInput! = {}): Int
   keystone: KeystoneMeta!
   authenticatedItem: AuthenticatedItem
 }

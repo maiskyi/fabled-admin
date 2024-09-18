@@ -15,6 +15,9 @@ export const Story = list({
   access: allowAll,
   ui: {
     hideCreate: true,
+    listView: {
+      initialColumns: ["title"],
+    },
   },
   fields: {
     firebaseUserId: text({

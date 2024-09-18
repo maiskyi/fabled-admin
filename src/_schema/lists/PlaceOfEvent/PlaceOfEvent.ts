@@ -6,6 +6,11 @@ import { LANGUAGE_OPTIONS } from "../lists.const";
 
 export const PlaceOfEvent = list({
   access: allowAll,
+  ui: {
+    listView: {
+      initialColumns: ["title", "language"],
+    },
+  },
   fields: {
     title: text({
       validation: {

@@ -5,6 +5,11 @@ import { LANGUAGE_OPTIONS } from "../lists.const";
 
 export const MoralLesson = list({
   access: allowAll,
+  ui: {
+    listView: {
+      initialColumns: ["title", "language"],
+    },
+  },
   fields: {
     title: text({
       validation: {

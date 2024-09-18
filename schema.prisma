@@ -81,3 +81,13 @@ model PlaceOfEvent {
   isPublished Boolean   @default(false)
   createdAt   DateTime? @default(now())
 }
+
+model Prompt {
+  id          String    @id @default(cuid())
+  title       String    @default("")
+  message     String    @default("")
+  textPrompt  String    @default("")
+  imagePrompt String    @default("")
+  language    String
+  createdAt   DateTime? @default(now())
+}

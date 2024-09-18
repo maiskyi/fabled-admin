@@ -1,10 +1,9 @@
 import { list } from "@keystone-6/core";
 import { allowAll } from "@keystone-6/core/access";
-import { text, timestamp, select, checkbox } from "@keystone-6/core/fields";
-import { cloudinaryImage } from "@keystone-6/cloudinary";
+import { text, timestamp, select } from "@keystone-6/core/fields";
 import { LANGUAGE_OPTIONS } from "../lists.const";
 
-export const Character = list({
+export const Prompt = list({
   access: allowAll,
   ui: {
     listView: {
@@ -17,17 +16,37 @@ export const Character = list({
         isRequired: true,
       },
     }),
-    description: text({
+    message: text({
       ui: {
         displayMode: "textarea",
+        listView: {
+          fieldMode: "hidden",
+        },
+      },
+      validation: {
+        isRequired: true,
       },
     }),
-    image: cloudinaryImage({
-      cloudinary: {
-        cloudName: process.env.CLOUDINARY_CLOUD_NAME,
-        apiKey: process.env.CLOUDINARY_API_KEY,
-        apiSecret: process.env.CLOUDINARY_API_SECRET,
-        folder: "character",
+    textPrompt: text({
+      ui: {
+        displayMode: "textarea",
+        listView: {
+          fieldMode: "hidden",
+        },
+      },
+      validation: {
+        isRequired: true,
+      },
+    }),
+    imagePrompt: text({
+      ui: {
+        displayMode: "textarea",
+        listView: {
+          fieldMode: "hidden",
+        },
+      },
+      validation: {
+        isRequired: true,
       },
     }),
     language: select({
@@ -37,7 +56,6 @@ export const Character = list({
         isRequired: true,
       },
     }),
-    isPublished: checkbox(),
     createdAt: timestamp({
       ui: {
         itemView: {
