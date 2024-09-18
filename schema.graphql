@@ -376,8 +376,13 @@ type Character {
   title: String
   description: String
   image: CloudinaryImage_File
-  language: String
+  language: CharacterLanguageType
+  isPublished: Boolean
   createdAt: DateTime
+}
+
+enum CharacterLanguageType {
+  en
 }
 
 input CharacterWhereUniqueInput {
@@ -391,8 +396,16 @@ input CharacterWhereInput {
   id: IDFilter
   title: StringFilter
   description: StringFilter
-  language: StringFilter
+  language: CharacterLanguageTypeNullableFilter
+  isPublished: BooleanFilter
   createdAt: DateTimeNullableFilter
+}
+
+input CharacterLanguageTypeNullableFilter {
+  equals: CharacterLanguageType
+  in: [CharacterLanguageType!]
+  notIn: [CharacterLanguageType!]
+  not: CharacterLanguageTypeNullableFilter
 }
 
 input CharacterOrderByInput {
@@ -400,6 +413,7 @@ input CharacterOrderByInput {
   title: OrderDirection
   description: OrderDirection
   language: OrderDirection
+  isPublished: OrderDirection
   createdAt: OrderDirection
 }
 
@@ -407,7 +421,8 @@ input CharacterUpdateInput {
   title: String
   description: String
   image: Upload
-  language: String
+  language: CharacterLanguageType
+  isPublished: Boolean
   createdAt: DateTime
 }
 
@@ -420,7 +435,8 @@ input CharacterCreateInput {
   title: String
   description: String
   image: Upload
-  language: String
+  language: CharacterLanguageType
+  isPublished: Boolean
   createdAt: DateTime
 }
 
@@ -428,8 +444,13 @@ type MoralLesson {
   id: ID!
   title: String
   description: String
-  language: String
+  language: MoralLessonLanguageType
+  isPublished: Boolean
   createdAt: DateTime
+}
+
+enum MoralLessonLanguageType {
+  en
 }
 
 input MoralLessonWhereUniqueInput {
@@ -443,8 +464,16 @@ input MoralLessonWhereInput {
   id: IDFilter
   title: StringFilter
   description: StringFilter
-  language: StringFilter
+  language: MoralLessonLanguageTypeNullableFilter
+  isPublished: BooleanFilter
   createdAt: DateTimeNullableFilter
+}
+
+input MoralLessonLanguageTypeNullableFilter {
+  equals: MoralLessonLanguageType
+  in: [MoralLessonLanguageType!]
+  notIn: [MoralLessonLanguageType!]
+  not: MoralLessonLanguageTypeNullableFilter
 }
 
 input MoralLessonOrderByInput {
@@ -452,13 +481,15 @@ input MoralLessonOrderByInput {
   title: OrderDirection
   description: OrderDirection
   language: OrderDirection
+  isPublished: OrderDirection
   createdAt: OrderDirection
 }
 
 input MoralLessonUpdateInput {
   title: String
   description: String
-  language: String
+  language: MoralLessonLanguageType
+  isPublished: Boolean
   createdAt: DateTime
 }
 
@@ -470,7 +501,8 @@ input MoralLessonUpdateArgs {
 input MoralLessonCreateInput {
   title: String
   description: String
-  language: String
+  language: MoralLessonLanguageType
+  isPublished: Boolean
   createdAt: DateTime
 }
 
@@ -478,8 +510,13 @@ type PlaceOfEvent {
   id: ID!
   title: String
   image: CloudinaryImage_File
-  language: String
+  language: PlaceOfEventLanguageType
+  isPublished: Boolean
   createdAt: DateTime
+}
+
+enum PlaceOfEventLanguageType {
+  en
 }
 
 input PlaceOfEventWhereUniqueInput {
@@ -492,21 +529,31 @@ input PlaceOfEventWhereInput {
   NOT: [PlaceOfEventWhereInput!]
   id: IDFilter
   title: StringFilter
-  language: StringFilter
+  language: PlaceOfEventLanguageTypeNullableFilter
+  isPublished: BooleanFilter
   createdAt: DateTimeNullableFilter
+}
+
+input PlaceOfEventLanguageTypeNullableFilter {
+  equals: PlaceOfEventLanguageType
+  in: [PlaceOfEventLanguageType!]
+  notIn: [PlaceOfEventLanguageType!]
+  not: PlaceOfEventLanguageTypeNullableFilter
 }
 
 input PlaceOfEventOrderByInput {
   id: OrderDirection
   title: OrderDirection
   language: OrderDirection
+  isPublished: OrderDirection
   createdAt: OrderDirection
 }
 
 input PlaceOfEventUpdateInput {
   title: String
   image: Upload
-  language: String
+  language: PlaceOfEventLanguageType
+  isPublished: Boolean
   createdAt: DateTime
 }
 
@@ -518,7 +565,8 @@ input PlaceOfEventUpdateArgs {
 input PlaceOfEventCreateInput {
   title: String
   image: Upload
-  language: String
+  language: PlaceOfEventLanguageType
+  isPublished: Boolean
   createdAt: DateTime
 }
 

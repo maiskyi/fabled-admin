@@ -1,6 +1,6 @@
 import { list } from "@keystone-6/core";
 import { allowAll } from "@keystone-6/core/access";
-import { text, timestamp, select } from "@keystone-6/core/fields";
+import { text, timestamp, select, checkbox } from "@keystone-6/core/fields";
 import { cloudinaryImage } from "@keystone-6/cloudinary";
 import { LANGUAGE_OPTIONS } from "../lists.const";
 
@@ -29,11 +29,13 @@ export const Character = list({
       },
     }),
     language: select({
+      type: "enum",
       options: LANGUAGE_OPTIONS,
       validation: {
         isRequired: true,
       },
     }),
+    isPublished: checkbox(),
     createdAt: timestamp({
       ui: {
         itemView: {

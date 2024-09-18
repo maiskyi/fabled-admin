@@ -60,6 +60,7 @@ model Character {
   description String    @default("")
   image       String?
   language    String
+  isPublished Boolean   @default(false)
   createdAt   DateTime? @default(now())
 }
 
@@ -68,13 +69,15 @@ model MoralLesson {
   title       String    @default("")
   description String    @default("")
   language    String
+  isPublished Boolean   @default(false)
   createdAt   DateTime? @default(now())
 }
 
 model PlaceOfEvent {
-  id        String    @id @default(cuid())
-  title     String    @default("")
-  image     String?
-  language  String
-  createdAt DateTime? @default(now())
+  id          String    @id @default(cuid())
+  title       String    @default("")
+  image       String?
+  language    String
+  isPublished Boolean   @default(false)
+  createdAt   DateTime? @default(now())
 }
