@@ -22,7 +22,7 @@ export const PlaceOfEvent = list({
         cloudName: process.env.CLOUDINARY_CLOUD_NAME,
         apiKey: process.env.CLOUDINARY_API_KEY,
         apiSecret: process.env.CLOUDINARY_API_SECRET,
-        folder: "character",
+        folder: "place-of-event",
       },
     }),
     language: select({
