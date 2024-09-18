@@ -13,6 +13,9 @@ import { hooks } from "./hooks";
 
 export const Story = list({
   access: allowAll,
+  ui: {
+    hideCreate: true,
+  },
   fields: {
     firebaseUserId: text({
       ui: {
