@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+// @ts-expect-error Valid error
 // eslint-disable-next-line import/no-extraneous-dependencies
 import Upload from "graphql-upload/Upload.js";
 import { UploadImageInput } from "./uploadImage.types";

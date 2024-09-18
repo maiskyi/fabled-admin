@@ -13,6 +13,7 @@ export const generateImage = async ({
     return {
       url: "https://www.npmjs.com/npm-avatar/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdmF0YXJVUkwiOiJodHRwczovL3MuZ3JhdmF0YXIuY29tL2F2YXRhci9iOWIyZjRiNGFmZjE3Nzg0ZTMyY2FmNGM5MzZmYTk2MT9zaXplPTEwMCZkZWZhdWx0PXJldHJvIn0.S-dpgjQz-EW5TbgsVMhExyplUOZbH9bGDhwdorVfVtE",
     };
+
     const client = new OpenAI();
 
     const prompt = render(

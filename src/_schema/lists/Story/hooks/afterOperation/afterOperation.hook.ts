@@ -46,6 +46,7 @@ export const afterOperation: ListHooks<Lists.Story.TypeInfo> = {
             where: { id: item.id },
             data: {
               image: upload,
+              isReady: true,
               status: status.next("success").value,
             },
           });
