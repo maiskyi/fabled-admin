@@ -53,3 +53,12 @@ model Inquiry {
   message   String    @default("")
   createdAt DateTime? @default(now())
 }
+
+model Character {
+  id          String    @id @default(cuid())
+  title       String    @default("")
+  description String    @default("")
+  image       String?
+  language    String
+  createdAt   DateTime? @default(now())
+}

@@ -371,6 +371,59 @@ input InquiryCreateInput {
   createdAt: DateTime
 }
 
+type Character {
+  id: ID!
+  title: String
+  description: String
+  image: CloudinaryImage_File
+  language: String
+  createdAt: DateTime
+}
+
+input CharacterWhereUniqueInput {
+  id: ID
+}
+
+input CharacterWhereInput {
+  AND: [CharacterWhereInput!]
+  OR: [CharacterWhereInput!]
+  NOT: [CharacterWhereInput!]
+  id: IDFilter
+  title: StringFilter
+  description: StringFilter
+  language: StringFilter
+  createdAt: DateTimeNullableFilter
+}
+
+input CharacterOrderByInput {
+  id: OrderDirection
+  title: OrderDirection
+  description: OrderDirection
+  language: OrderDirection
+  createdAt: OrderDirection
+}
+
+input CharacterUpdateInput {
+  title: String
+  description: String
+  image: Upload
+  language: String
+  createdAt: DateTime
+}
+
+input CharacterUpdateArgs {
+  where: CharacterWhereUniqueInput!
+  data: CharacterUpdateInput!
+}
+
+input CharacterCreateInput {
+  title: String
+  description: String
+  image: Upload
+  language: String
+  createdAt: DateTime
+}
+
 """
 The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
 """
@@ -401,6 +454,12 @@ type Mutation {
   updateInquiries(data: [InquiryUpdateArgs!]!): [Inquiry]
   deleteInquiry(where: InquiryWhereUniqueInput!): Inquiry
   deleteInquiries(where: [InquiryWhereUniqueInput!]!): [Inquiry]
+  createCharacter(data: CharacterCreateInput!): Character
+  createCharacters(data: [CharacterCreateInput!]!): [Character]
+  updateCharacter(where: CharacterWhereUniqueInput!, data: CharacterUpdateInput!): Character
+  updateCharacters(data: [CharacterUpdateArgs!]!): [Character]
+  deleteCharacter(where: CharacterWhereUniqueInput!): Character
+  deleteCharacters(where: [CharacterWhereUniqueInput!]!): [Character]
   endSession: Boolean!
   authenticateUserWithPassword(email: String!, password: String!): UserAuthenticationWithPasswordResult
   createInitialUser(data: CreateInitialUserInput!): UserAuthenticationWithPasswordSuccess!
@@ -436,6 +495,9 @@ type Query {
   inquiry(where: InquiryWhereUniqueInput!): Inquiry
   inquiries(where: InquiryWhereInput! = {}, orderBy: [InquiryOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: InquiryWhereUniqueInput): [Inquiry!]
   inquiriesCount(where: InquiryWhereInput! = {}): Int
+  character(where: CharacterWhereUniqueInput!): Character
+  characters(where: CharacterWhereInput! = {}, orderBy: [CharacterOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: CharacterWhereUniqueInput): [Character!]
+  charactersCount(where: CharacterWhereInput! = {}): Int
   keystone: KeystoneMeta!
   authenticatedItem: AuthenticatedItem
 }
