@@ -9,7 +9,7 @@ export default withAuth(
     server: {
       extendHttpServer,
       cors: {
-        origin: process.env.SERVER_CORS_ORIGINS.split(",")
+        origin: process.env.SERVER_CORS_ORIGINS?.split(",")
           .map((v) => v.trim())
           .filter((v) => !!v),
       },

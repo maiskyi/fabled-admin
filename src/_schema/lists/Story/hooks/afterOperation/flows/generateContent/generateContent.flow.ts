@@ -11,6 +11,11 @@ export const generateContent = async ({
   prompt,
 }: GenerateContentInput): Promise<GenerateContentOutput> => {
   try {
+    return {
+      title: "The Three Little Pigs on Majestic Mountain",
+      content: "The Three Little Pigs on Majestic Mountain",
+    };
+
     const client = new OpenAI();
 
     const completion = await client.chat.completions.create({
