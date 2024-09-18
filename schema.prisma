@@ -22,6 +22,7 @@ model User {
 model Feedback {
   id             String    @id @default(cuid())
   firebaseUserId String    @default("")
+  email          String    @default("")
   rating         Int
   comment        String    @default("")
   createdAt      DateTime? @default(now())

@@ -1,11 +1,25 @@
 import { list } from "@keystone-6/core";
 import { allowAll } from "@keystone-6/core/access";
 import { text, timestamp, integer } from "@keystone-6/core/fields";
+import { hooks } from "./hooks";
 
 export const Feedback = list({
   access: allowAll,
+  ui: {
+    hideCreate: true,
+  },
   fields: {
     firebaseUserId: text({
+      ui: {
+        itemView: {
+          fieldMode: "read",
+        },
+      },
+      validation: {
+        isRequired: true,
+      },
+    }),
+    email: text({
       ui: {
         itemView: {
           fieldMode: "read",
@@ -49,4 +63,5 @@ export const Feedback = list({
       },
     }),
   },
+  hooks: hooks,
 });
