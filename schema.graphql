@@ -180,6 +180,9 @@ input FeedbackCreateInput {
 type Story {
   id: ID!
   firebaseUserId: String
+  character: Character
+  placeOfEvent: PlaceOfEvent
+  moralLesson: MoralLesson
   title: String
   content: String
   image: CloudinaryImage_File
@@ -257,6 +260,9 @@ input StoryWhereInput {
   NOT: [StoryWhereInput!]
   id: IDFilter
   firebaseUserId: StringFilter
+  character: CharacterWhereInput
+  placeOfEvent: PlaceOfEventWhereInput
+  moralLesson: MoralLessonWhereInput
   title: StringFilter
   content: StringFilter
   readTime: IntFilter
@@ -287,6 +293,9 @@ input StoryOrderByInput {
 
 input StoryUpdateInput {
   firebaseUserId: String
+  character: CharacterRelateToOneForUpdateInput
+  placeOfEvent: PlaceOfEventRelateToOneForUpdateInput
+  moralLesson: MoralLessonRelateToOneForUpdateInput
   title: String
   content: String
   image: Upload
@@ -297,6 +306,24 @@ input StoryUpdateInput {
   contentPrompt: String
   imagePrompt: String
   message: String
+}
+
+input CharacterRelateToOneForUpdateInput {
+  create: CharacterCreateInput
+  connect: CharacterWhereUniqueInput
+  disconnect: Boolean
+}
+
+input PlaceOfEventRelateToOneForUpdateInput {
+  create: PlaceOfEventCreateInput
+  connect: PlaceOfEventWhereUniqueInput
+  disconnect: Boolean
+}
+
+input MoralLessonRelateToOneForUpdateInput {
+  create: MoralLessonCreateInput
+  connect: MoralLessonWhereUniqueInput
+  disconnect: Boolean
 }
 
 """The `Upload` scalar type represents a file upload."""
@@ -309,6 +336,9 @@ input StoryUpdateArgs {
 
 input StoryCreateInput {
   firebaseUserId: String
+  character: CharacterRelateToOneForCreateInput
+  placeOfEvent: PlaceOfEventRelateToOneForCreateInput
+  moralLesson: MoralLessonRelateToOneForCreateInput
   title: String
   content: String
   image: Upload
@@ -319,6 +349,21 @@ input StoryCreateInput {
   contentPrompt: String
   imagePrompt: String
   message: String
+}
+
+input CharacterRelateToOneForCreateInput {
+  create: CharacterCreateInput
+  connect: CharacterWhereUniqueInput
+}
+
+input PlaceOfEventRelateToOneForCreateInput {
+  create: PlaceOfEventCreateInput
+  connect: PlaceOfEventWhereUniqueInput
+}
+
+input MoralLessonRelateToOneForCreateInput {
+  create: MoralLessonCreateInput
+  connect: MoralLessonWhereUniqueInput
 }
 
 type Inquiry {

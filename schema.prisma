@@ -29,19 +29,28 @@ model Feedback {
 }
 
 model Story {
-  id             String    @id @default(cuid())
-  firebaseUserId String    @default("")
-  title          String    @default("")
-  content        String    @default("")
+  id             String        @id @default(cuid())
+  firebaseUserId String        @default("")
+  character      Character?    @relation("Story_character", fields: [characterId], references: [id])
+  characterId    String?       @map("character")
+  placeOfEvent   PlaceOfEvent? @relation("Story_placeOfEvent", fields: [placeOfEventId], references: [id])
+  placeOfEventId String?       @map("placeOfEvent")
+  moralLesson    MoralLesson?  @relation("Story_moralLesson", fields: [moralLessonId], references: [id])
+  moralLessonId  String?       @map("moralLesson")
+  title          String        @default("")
+  content        String        @default("")
   image          String?
   readTime       Int
-  status         String    @default("[\"initialized\"]")
-  isReady        Boolean   @default(false)
-  createdAt      DateTime? @default(now())
-  contentPrompt  String    @default("")
-  imagePrompt    String    @default("")
-  message        String    @default("")
+  status         String        @default("[\"initialized\"]")
+  isReady        Boolean       @default(false)
+  createdAt      DateTime?     @default(now())
+  contentPrompt  String        @default("")
+  imagePrompt    String        @default("")
+  message        String        @default("")
 
+  @@index([characterId])
+  @@index([placeOfEventId])
+  @@index([moralLessonId])
   @@index([title])
   @@index([content])
 }
@@ -55,31 +64,34 @@ model Inquiry {
 }
 
 model Character {
-  id          String    @id @default(cuid())
-  title       String    @default("")
-  description String    @default("")
-  image       String?
-  language    String
-  isPublished Boolean   @default(false)
-  createdAt   DateTime? @default(now())
+  id                   String    @id @default(cuid())
+  title                String    @default("")
+  description          String    @default("")
+  image                String?
+  language             String
+  isPublished          Boolean   @default(false)
+  createdAt            DateTime? @default(now())
+  from_Story_character Story[]   @relation("Story_character")
 }
 
 model MoralLesson {
-  id          String    @id @default(cuid())
-  title       String    @default("")
-  description String    @default("")
-  language    String
-  isPublished Boolean   @default(false)
-  createdAt   DateTime? @default(now())
+  id                     String    @id @default(cuid())
+  title                  String    @default("")
+  description            String    @default("")
+  language               String
+  isPublished            Boolean   @default(false)
+  createdAt              DateTime? @default(now())
+  from_Story_moralLesson Story[]   @relation("Story_moralLesson")
 }
 
 model PlaceOfEvent {
-  id          String    @id @default(cuid())
-  title       String    @default("")
-  image       String?
-  language    String
-  isPublished Boolean   @default(false)
-  createdAt   DateTime? @default(now())
+  id                      String    @id @default(cuid())
+  title                   String    @default("")
+  image                   String?
+  language                String
+  isPublished             Boolean   @default(false)
+  createdAt               DateTime? @default(now())
+  from_Story_placeOfEvent Story[]   @relation("Story_placeOfEvent")
 }
 
 model Prompt {

@@ -1,5 +1,6 @@
 import type { GraphQLSchema } from "graphql";
 import { mergeSchemas } from "@graphql-tools/schema";
+import { get } from "lodash";
 import { pubsub, PubSubTrigger } from "../_pubsub";
 
 export const extendGraphqlSchema = (schema: GraphQLSchema) =>
@@ -13,7 +14,11 @@ export const extendGraphqlSchema = (schema: GraphQLSchema) =>
     resolvers: {
       Subscription: {
         storyUpdated: {
-          subscribe: () => pubsub.asyncIterator([PubSubTrigger.StoryUpdated]),
+          subscribe: (_, args) => {
+            return pubsub.asyncIterator(
+              `${PubSubTrigger.StoryUpdated}-${get(args, "id")}`
+            );
+          },
         },
       },
     },

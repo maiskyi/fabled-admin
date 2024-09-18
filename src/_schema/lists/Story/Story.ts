@@ -6,6 +6,7 @@ import {
   timestamp,
   checkbox,
   select,
+  relationship,
 } from "@keystone-6/core/fields";
 import { cloudinaryImage } from "@keystone-6/cloudinary";
 import { READ_TIME_OPTIONS, STATUS_OPTIONS } from "./Story.const";
@@ -28,6 +29,30 @@ export const Story = list({
       },
       validation: {
         isRequired: true,
+      },
+    }),
+    character: relationship({
+      ref: "Character",
+      ui: {
+        itemView: {
+          fieldMode: "read",
+        },
+      },
+    }),
+    placeOfEvent: relationship({
+      ref: "PlaceOfEvent",
+      ui: {
+        itemView: {
+          fieldMode: "read",
+        },
+      },
+    }),
+    moralLesson: relationship({
+      ref: "MoralLesson",
+      ui: {
+        itemView: {
+          fieldMode: "read",
+        },
       },
     }),
     title: text({
