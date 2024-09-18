@@ -20,10 +20,11 @@ model User {
 }
 
 model Feedback {
-  id        String    @id @default(cuid())
-  rating    Int
-  comment   String    @default("")
-  createdAt DateTime? @default(now())
+  id             String    @id @default(cuid())
+  firebaseUserId String    @default("")
+  rating         Int
+  comment        String    @default("")
+  createdAt      DateTime? @default(now())
 }
 
 model Story {

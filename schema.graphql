@@ -113,6 +113,7 @@ input UserCreateInput {
 
 type Feedback {
   id: ID!
+  firebaseUserId: String
   rating: Int
   comment: String
   createdAt: DateTime
@@ -127,6 +128,7 @@ input FeedbackWhereInput {
   OR: [FeedbackWhereInput!]
   NOT: [FeedbackWhereInput!]
   id: IDFilter
+  firebaseUserId: StringFilter
   rating: IntFilter
   comment: StringFilter
   createdAt: DateTimeNullableFilter
@@ -145,12 +147,14 @@ input IntFilter {
 
 input FeedbackOrderByInput {
   id: OrderDirection
+  firebaseUserId: OrderDirection
   rating: OrderDirection
   comment: OrderDirection
   createdAt: OrderDirection
 }
 
 input FeedbackUpdateInput {
+  firebaseUserId: String
   rating: Int
   comment: String
   createdAt: DateTime
@@ -162,6 +166,7 @@ input FeedbackUpdateArgs {
 }
 
 input FeedbackCreateInput {
+  firebaseUserId: String
   rating: Int
   comment: String
   createdAt: DateTime
