@@ -641,6 +641,46 @@ input PromptCreateInput {
   createdAt: DateTime
 }
 
+type Config {
+  id: ID!
+  privacyPolicyUrl: String
+  termsAndConditionsUrl: String
+}
+
+input ConfigWhereUniqueInput {
+  id: ID
+}
+
+input ConfigWhereInput {
+  AND: [ConfigWhereInput!]
+  OR: [ConfigWhereInput!]
+  NOT: [ConfigWhereInput!]
+  id: IDFilter
+  privacyPolicyUrl: StringFilter
+  termsAndConditionsUrl: StringFilter
+}
+
+input ConfigOrderByInput {
+  id: OrderDirection
+  privacyPolicyUrl: OrderDirection
+  termsAndConditionsUrl: OrderDirection
+}
+
+input ConfigUpdateInput {
+  privacyPolicyUrl: String
+  termsAndConditionsUrl: String
+}
+
+input ConfigUpdateArgs {
+  where: ConfigWhereUniqueInput! = {id: 1}
+  data: ConfigUpdateInput!
+}
+
+input ConfigCreateInput {
+  privacyPolicyUrl: String
+  termsAndConditionsUrl: String
+}
+
 """
 The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
 """
@@ -695,6 +735,12 @@ type Mutation {
   updatePrompts(data: [PromptUpdateArgs!]!): [Prompt]
   deletePrompt(where: PromptWhereUniqueInput!): Prompt
   deletePrompts(where: [PromptWhereUniqueInput!]!): [Prompt]
+  createConfig(data: ConfigCreateInput!): Config
+  createConfigs(data: [ConfigCreateInput!]!): [Config]
+  updateConfig(where: ConfigWhereUniqueInput! = {id: 1}, data: ConfigUpdateInput!): Config
+  updateConfigs(data: [ConfigUpdateArgs!]!): [Config]
+  deleteConfig(where: ConfigWhereUniqueInput! = {id: 1}): Config
+  deleteConfigs(where: [ConfigWhereUniqueInput!]!): [Config]
   endSession: Boolean!
   authenticateUserWithPassword(email: String!, password: String!): UserAuthenticationWithPasswordResult
   createInitialUser(data: CreateInitialUserInput!): UserAuthenticationWithPasswordSuccess!
@@ -742,6 +788,9 @@ type Query {
   prompt(where: PromptWhereUniqueInput!): Prompt
   prompts(where: PromptWhereInput! = {}, orderBy: [PromptOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: PromptWhereUniqueInput): [Prompt!]
   promptsCount(where: PromptWhereInput! = {}): Int
+  config(where: ConfigWhereUniqueInput! = {id: 1}): Config
+  configs(where: ConfigWhereInput! = {id: {equals: 1}}, orderBy: [ConfigOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: ConfigWhereUniqueInput): [Config!]
+  configsCount(where: ConfigWhereInput! = {id: {equals: 1}}): Int
   keystone: KeystoneMeta!
   authenticatedItem: AuthenticatedItem
 }
