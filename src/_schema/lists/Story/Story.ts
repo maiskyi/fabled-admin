@@ -30,6 +30,9 @@ export const Story = list({
         createView: {
           fieldMode: "hidden",
         },
+        itemView: {
+          fieldMode: "read",
+        },
       },
     }),
     content: text({
@@ -42,12 +45,18 @@ export const Story = list({
         itemView: {
           fieldMode: "read",
         },
+        listView: {
+          fieldMode: "hidden",
+        },
       },
     }),
     image: cloudinaryImage({
       ui: {
         createView: {
           fieldMode: "hidden",
+        },
+        itemView: {
+          fieldMode: "read",
         },
       },
       cloudinary: {
@@ -62,6 +71,11 @@ export const Story = list({
       options: READ_TIME_OPTIONS,
       validation: {
         isRequired: true,
+      },
+      ui: {
+        itemView: {
+          fieldMode: "read",
+        },
       },
     }),
     status: multiselect({
@@ -107,6 +121,9 @@ export const Story = list({
       },
       ui: {
         displayMode: "textarea",
+        itemView: {
+          fieldMode: "read",
+        },
       },
     }),
     imagePrompt: text({
@@ -115,6 +132,9 @@ export const Story = list({
       },
       ui: {
         displayMode: "textarea",
+        itemView: {
+          fieldMode: "read",
+        },
       },
     }),
     message: text({
@@ -123,6 +143,9 @@ export const Story = list({
       },
       ui: {
         displayMode: "textarea",
+        itemView: {
+          fieldMode: "read",
+        },
       },
     }),
   },

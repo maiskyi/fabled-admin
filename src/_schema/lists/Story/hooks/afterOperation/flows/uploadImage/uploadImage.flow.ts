@@ -1,22 +1,33 @@
-import fs from "fs";
-import path from "path";
 // @ts-expect-error Valid error
 // eslint-disable-next-line import/no-extraneous-dependencies
 import Upload from "graphql-upload/Upload.js";
+import got from "got";
+import { get } from "lodash";
+import { StoryException } from "../../services/StoryException";
+import { StoryExceptionCode } from "../../../../Story.types";
 import { UploadImageInput } from "./uploadImage.types";
 
 export const uploadImage = ({ url }: UploadImageInput) => {
-  const filePath = path.resolve(__dirname, "./test.png");
-  const filename = path.basename(filePath);
+  if (url) {
+    try {
+      const upload = new Upload();
 
-  const upload = new Upload();
+      upload.resolve({
+        createReadStream: () => got.stream(url),
+      });
 
-  upload.resolve({
-    createReadStream: () => fs.createReadStream(filePath),
-    filename,
-    mimetype: "image/png",
-    encoding: "utf-8",
-  });
-
-  return upload;
+      return upload;
+    } catch (error) {
+      throw new StoryException({
+        message: "Story image upload failed",
+        code: StoryExceptionCode.StoryImageUploadFailed,
+        reason: get(error, "message"),
+      });
+    }
+  } else {
+    throw new StoryException({
+      message: "Story image upload failed. Image url is missing",
+      code: StoryExceptionCode.StoryImageUploadFailed,
+    });
+  }
 };

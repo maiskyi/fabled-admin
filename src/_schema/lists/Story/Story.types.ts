@@ -11,6 +11,7 @@ export enum StoryExceptionCode {
   StoryContentGenerationFailedWithNoResult = "storyContentGenerationFailedWithNoResult",
   StoryGenerationFailed = "storyGenerationFailed",
   StoryImageGenerationFailed = "storyImageGenerationFailed",
+  StoryImageUploadFailed = "storyImageUploadFailed",
   StoryImageGenerationFailedWithNoResult = "storyImageGenerationFailedWithNoResult",
   StoryImageUploadingToCloudinaryFailed = "storyImageUploadingToCloudinaryFailed",
 }
