@@ -321,6 +321,56 @@ input StoryCreateInput {
   message: String
 }
 
+type Inquiry {
+  id: ID!
+  email: String
+  subject: String
+  message: String
+  createdAt: DateTime
+}
+
+input InquiryWhereUniqueInput {
+  id: ID
+}
+
+input InquiryWhereInput {
+  AND: [InquiryWhereInput!]
+  OR: [InquiryWhereInput!]
+  NOT: [InquiryWhereInput!]
+  id: IDFilter
+  email: StringFilter
+  subject: StringFilter
+  message: StringFilter
+  createdAt: DateTimeNullableFilter
+}
+
+input InquiryOrderByInput {
+  id: OrderDirection
+  email: OrderDirection
+  subject: OrderDirection
+  message: OrderDirection
+  createdAt: OrderDirection
+}
+
+input InquiryUpdateInput {
+  email: String
+  subject: String
+  message: String
+  createdAt: DateTime
+}
+
+input InquiryUpdateArgs {
+  where: InquiryWhereUniqueInput!
+  data: InquiryUpdateInput!
+}
+
+input InquiryCreateInput {
+  email: String
+  subject: String
+  message: String
+  createdAt: DateTime
+}
+
 """
 The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
 """
@@ -345,6 +395,12 @@ type Mutation {
   updateStories(data: [StoryUpdateArgs!]!): [Story]
   deleteStory(where: StoryWhereUniqueInput!): Story
   deleteStories(where: [StoryWhereUniqueInput!]!): [Story]
+  createInquiry(data: InquiryCreateInput!): Inquiry
+  createInquiries(data: [InquiryCreateInput!]!): [Inquiry]
+  updateInquiry(where: InquiryWhereUniqueInput!, data: InquiryUpdateInput!): Inquiry
+  updateInquiries(data: [InquiryUpdateArgs!]!): [Inquiry]
+  deleteInquiry(where: InquiryWhereUniqueInput!): Inquiry
+  deleteInquiries(where: [InquiryWhereUniqueInput!]!): [Inquiry]
   endSession: Boolean!
   authenticateUserWithPassword(email: String!, password: String!): UserAuthenticationWithPasswordResult
   createInitialUser(data: CreateInitialUserInput!): UserAuthenticationWithPasswordSuccess!
@@ -377,6 +433,9 @@ type Query {
   story(where: StoryWhereUniqueInput!): Story
   stories(where: StoryWhereInput! = {}, orderBy: [StoryOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: StoryWhereUniqueInput): [Story!]
   storiesCount(where: StoryWhereInput! = {}): Int
+  inquiry(where: InquiryWhereUniqueInput!): Inquiry
+  inquiries(where: InquiryWhereInput! = {}, orderBy: [InquiryOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: InquiryWhereUniqueInput): [Inquiry!]
+  inquiriesCount(where: InquiryWhereInput! = {}): Int
   keystone: KeystoneMeta!
   authenticatedItem: AuthenticatedItem
 }

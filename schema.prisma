@@ -45,3 +45,11 @@ model Story {
   @@index([title])
   @@index([content])
 }
+
+model Inquiry {
+  id        String    @id @default(cuid())
+  email     String    @default("")
+  subject   String    @default("")
+  message   String    @default("")
+  createdAt DateTime? @default(now())
+}
