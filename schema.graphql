@@ -978,5 +978,5 @@ enum KeystoneAdminUISortDirection {
 }
 
 type Subscription {
-  storyUpdated(id: ID): Story
+  storyUpdated(id: String): Story
 }

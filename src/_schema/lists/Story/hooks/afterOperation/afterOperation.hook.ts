@@ -3,7 +3,7 @@ import { ListHooks } from "@keystone-6/core/types";
 import { Lists } from ".keystone/types";
 import { get } from "lodash";
 import { StoryExceptionCode } from "../../Story.types";
-import { pubsub, PubSubTrigger } from "../../../../../_pubsub";
+import { pubsub } from "../../../../../_pubsub";
 import { StoryStatus } from "./services/StoryStatus";
 import { StoryException } from "./services/StoryException";
 import { generateContent } from "./flows/generateContent";
@@ -67,7 +67,7 @@ export const afterOperation: ListHooks<Lists.Story.TypeInfo> = {
       })();
     },
     update: ({ item }) => {
-      pubsub.publish(`${PubSubTrigger.StoryUpdated}-${item.id}`, {
+      pubsub.publish(item.id, {
         storyUpdated: item,
       });
     },
