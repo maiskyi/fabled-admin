@@ -1,7 +1,7 @@
 import OpenAI from "openai";
 import { get } from "lodash";
 import { StoryException } from "../../services/StoryException";
-import { StoryExceptionCode } from "../../../../Story.types";
+import { StoryExceptionCode } from "../../../../../Story.types";
 import {
   GenerateContentInput,
   GenerateContentOutput,

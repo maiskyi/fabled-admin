@@ -4,7 +4,7 @@ import Upload from "graphql-upload/Upload.js";
 import got from "got";
 import { get } from "lodash";
 import { StoryException } from "../../services/StoryException";
-import { StoryExceptionCode } from "../../../../Story.types";
+import { StoryExceptionCode } from "../../../../../Story.types";
 import { UploadImageInput } from "./uploadImage.types";
 
 export const uploadImage = ({ url }: UploadImageInput) => {

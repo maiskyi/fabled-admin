@@ -1,7 +1,7 @@
 import OpenAI from "openai";
 import { render } from "micromustache";
 import { get } from "lodash";
-import { StoryExceptionCode } from "../../../../Story.types";
+import { StoryExceptionCode } from "../../../../../Story.types";
 import { StoryException } from "../../services/StoryException";
 import { GenerateImageInput } from "./generateImage.types";
 

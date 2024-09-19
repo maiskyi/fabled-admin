@@ -2,15 +2,14 @@ import { ListHooks } from "@keystone-6/core/types";
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { Lists } from ".keystone/types";
 import { get } from "lodash";
-import { StoryExceptionCode } from "../../Story.types";
-import { pubsub } from "../../../../../_pubsub";
-import { StoryStatus } from "./services/StoryStatus";
+import { StoryExceptionCode } from "../../../Story.types";
 import { StoryException } from "./services/StoryException";
+import { StoryStatus } from "./services/StoryStatus";
 import { generateContent } from "./flows/generateContent";
 import { generateImage } from "./flows/generateImage";
 import { uploadImage } from "./flows/uploadImage";
 
-export const afterOperation: ListHooks<Lists.Story.TypeInfo> = {
+export const create: ListHooks<Lists.Story.TypeInfo> = {
   afterOperation: {
     create: ({ item, context }) => {
       (async () => {
@@ -65,11 +64,6 @@ export const afterOperation: ListHooks<Lists.Story.TypeInfo> = {
           console.error(exception);
         }
       })();
-    },
-    update: ({ item }) => {
-      pubsub.publish(item.id, {
-        storyUpdated: item,
-      });
     },
   },
 };
