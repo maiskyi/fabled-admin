@@ -686,6 +686,70 @@ input PromptCreateInput {
   createdAt: DateTime
 }
 
+type Subscription {
+  id: ID!
+  title: String
+  billingPeriod: SubscriptionBillingPeriodType
+  appleProductId: String
+  isActive: Boolean
+  storyUpdated(id: String): Story
+  userStoriesCountUpdated(id: String): Int
+}
+
+enum SubscriptionBillingPeriodType {
+  Monthly
+  Yearly
+}
+
+input SubscriptionWhereUniqueInput {
+  id: ID
+}
+
+input SubscriptionWhereInput {
+  AND: [SubscriptionWhereInput!]
+  OR: [SubscriptionWhereInput!]
+  NOT: [SubscriptionWhereInput!]
+  id: IDFilter
+  title: StringFilter
+  billingPeriod: SubscriptionBillingPeriodTypeNullableFilter
+  appleProductId: StringFilter
+  isActive: BooleanFilter
+}
+
+input SubscriptionBillingPeriodTypeNullableFilter {
+  equals: SubscriptionBillingPeriodType
+  in: [SubscriptionBillingPeriodType!]
+  notIn: [SubscriptionBillingPeriodType!]
+  not: SubscriptionBillingPeriodTypeNullableFilter
+}
+
+input SubscriptionOrderByInput {
+  id: OrderDirection
+  title: OrderDirection
+  billingPeriod: OrderDirection
+  appleProductId: OrderDirection
+  isActive: OrderDirection
+}
+
+input SubscriptionUpdateInput {
+  title: String
+  billingPeriod: SubscriptionBillingPeriodType
+  appleProductId: String
+  isActive: Boolean
+}
+
+input SubscriptionUpdateArgs {
+  where: SubscriptionWhereUniqueInput!
+  data: SubscriptionUpdateInput!
+}
+
+input SubscriptionCreateInput {
+  title: String
+  billingPeriod: SubscriptionBillingPeriodType
+  appleProductId: String
+  isActive: Boolean
+}
+
 type Config {
   id: ID!
   privacyPolicyUrl: String
@@ -780,6 +844,12 @@ type Mutation {
   updatePrompts(data: [PromptUpdateArgs!]!): [Prompt]
   deletePrompt(where: PromptWhereUniqueInput!): Prompt
   deletePrompts(where: [PromptWhereUniqueInput!]!): [Prompt]
+  createSubscription(data: SubscriptionCreateInput!): Subscription
+  createSubscriptions(data: [SubscriptionCreateInput!]!): [Subscription]
+  updateSubscription(where: SubscriptionWhereUniqueInput!, data: SubscriptionUpdateInput!): Subscription
+  updateSubscriptions(data: [SubscriptionUpdateArgs!]!): [Subscription]
+  deleteSubscription(where: SubscriptionWhereUniqueInput!): Subscription
+  deleteSubscriptions(where: [SubscriptionWhereUniqueInput!]!): [Subscription]
   createConfig(data: ConfigCreateInput!): Config
   createConfigs(data: [ConfigCreateInput!]!): [Config]
   updateConfig(where: ConfigWhereUniqueInput! = {id: 1}, data: ConfigUpdateInput!): Config
@@ -833,6 +903,9 @@ type Query {
   prompt(where: PromptWhereUniqueInput!): Prompt
   prompts(where: PromptWhereInput! = {}, orderBy: [PromptOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: PromptWhereUniqueInput): [Prompt!]
   promptsCount(where: PromptWhereInput! = {}): Int
+  subscription(where: SubscriptionWhereUniqueInput!): Subscription
+  subscriptions(where: SubscriptionWhereInput! = {}, orderBy: [SubscriptionOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: SubscriptionWhereUniqueInput): [Subscription!]
+  subscriptionsCount(where: SubscriptionWhereInput! = {}): Int
   config(where: ConfigWhereUniqueInput! = {id: 1}): Config
   configs(where: ConfigWhereInput! = {id: {equals: 1}}, orderBy: [ConfigOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: ConfigWhereUniqueInput): [Config!]
   configsCount(where: ConfigWhereInput! = {id: {equals: 1}}): Int
@@ -975,9 +1048,4 @@ type KeystoneAdminUISort {
 enum KeystoneAdminUISortDirection {
   ASC
   DESC
-}
-
-type Subscription {
-  storyUpdated(id: String): Story
-  userStoriesCountUpdated(id: String): Int
 }

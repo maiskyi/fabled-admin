@@ -104,6 +104,14 @@ model Prompt {
   createdAt   DateTime? @default(now())
 }
 
+model Subscription {
+  id             String  @id @default(cuid())
+  title          String  @default("")
+  billingPeriod  String
+  appleProductId String  @default("")
+  isActive       Boolean @default(false)
+}
+
 model Config {
   id                    Int    @id
   privacyPolicyUrl      String @default("")
