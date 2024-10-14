@@ -7,7 +7,7 @@
     "dev": "env-cmd keystone dev",
     "start": "keystone start",
     "build": "keystone build",
-    "lint": "eslint src --max-warnings=0"
+    "lint": "eslint src --max-warnings=0 --fix"
   },
   "dependencies": {
     "@graphql-tools/schema": "^10.0.6",
