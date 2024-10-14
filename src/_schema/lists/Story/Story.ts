@@ -15,7 +15,7 @@ import { hooks } from "./hooks";
 export const Story = list({
   access: allowAll,
   ui: {
-    hideCreate: true,
+    // hideCreate: true,
     listView: {
       initialColumns: ["title"],
     },
@@ -29,6 +29,14 @@ export const Story = list({
       },
       validation: {
         isRequired: true,
+      },
+    }),
+    prompt: relationship({
+      ref: "Prompt",
+      ui: {
+        itemView: {
+          fieldMode: "read",
+        },
       },
     }),
     character: relationship({
@@ -133,19 +141,6 @@ export const Story = list({
         },
       },
     }),
-    createdAt: timestamp({
-      ui: {
-        createView: {
-          fieldMode: "hidden",
-        },
-        itemView: {
-          fieldMode: "read",
-        },
-      },
-      defaultValue: {
-        kind: "now",
-      },
-    }),
     contentPrompt: text({
       validation: {
         isRequired: true,
@@ -177,6 +172,19 @@ export const Story = list({
         itemView: {
           fieldMode: "read",
         },
+      },
+    }),
+    createdAt: timestamp({
+      ui: {
+        createView: {
+          fieldMode: "hidden",
+        },
+        itemView: {
+          fieldMode: "read",
+        },
+      },
+      defaultValue: {
+        kind: "now",
       },
     }),
   },
