@@ -31,6 +31,8 @@ model Feedback {
 model Story {
   id             String        @id @default(cuid())
   firebaseUserId String        @default("")
+  prompt         Prompt?       @relation("Story_prompt", fields: [promptId], references: [id])
+  promptId       String?       @map("prompt")
   character      Character?    @relation("Story_character", fields: [characterId], references: [id])
   characterId    String?       @map("character")
   placeOfEvent   PlaceOfEvent? @relation("Story_placeOfEvent", fields: [placeOfEventId], references: [id])
@@ -43,11 +45,12 @@ model Story {
   readTime       Int
   status         String        @default("[\"initialized\"]")
   isReady        Boolean       @default(false)
-  createdAt      DateTime?     @default(now())
   contentPrompt  String        @default("")
   imagePrompt    String        @default("")
   message        String        @default("")
+  createdAt      DateTime?     @default(now())
 
+  @@index([promptId])
   @@index([characterId])
   @@index([placeOfEventId])
   @@index([moralLessonId])
@@ -95,13 +98,14 @@ model PlaceOfEvent {
 }
 
 model Prompt {
-  id          String    @id @default(cuid())
-  title       String    @default("")
-  message     String    @default("")
-  textPrompt  String    @default("")
-  imagePrompt String    @default("")
-  language    String
-  createdAt   DateTime? @default(now())
+  id                String    @id @default(cuid())
+  title             String    @default("")
+  message           String    @default("")
+  textPrompt        String    @default("")
+  imagePrompt       String    @default("")
+  language          String
+  createdAt         DateTime? @default(now())
+  from_Story_prompt Story[]   @relation("Story_prompt")
 }
 
 model Config {

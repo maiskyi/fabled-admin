@@ -180,6 +180,7 @@ input FeedbackCreateInput {
 type Story {
   id: ID!
   firebaseUserId: String
+  prompt: Prompt
   character: Character
   placeOfEvent: PlaceOfEvent
   moralLesson: MoralLesson
@@ -189,10 +190,10 @@ type Story {
   readTime: Int
   status: [StoryStatusType!]
   isReady: Boolean
-  createdAt: DateTime
   contentPrompt: String
   imagePrompt: String
   message: String
+  createdAt: DateTime
 }
 
 type CloudinaryImage_File {
@@ -260,6 +261,7 @@ input StoryWhereInput {
   NOT: [StoryWhereInput!]
   id: IDFilter
   firebaseUserId: StringFilter
+  prompt: PromptWhereInput
   character: CharacterWhereInput
   placeOfEvent: PlaceOfEventWhereInput
   moralLesson: MoralLessonWhereInput
@@ -267,10 +269,10 @@ input StoryWhereInput {
   content: StringFilter
   readTime: IntFilter
   isReady: BooleanFilter
-  createdAt: DateTimeNullableFilter
   contentPrompt: StringFilter
   imagePrompt: StringFilter
   message: StringFilter
+  createdAt: DateTimeNullableFilter
 }
 
 input BooleanFilter {
@@ -285,14 +287,15 @@ input StoryOrderByInput {
   content: OrderDirection
   readTime: OrderDirection
   isReady: OrderDirection
-  createdAt: OrderDirection
   contentPrompt: OrderDirection
   imagePrompt: OrderDirection
   message: OrderDirection
+  createdAt: OrderDirection
 }
 
 input StoryUpdateInput {
   firebaseUserId: String
+  prompt: PromptRelateToOneForUpdateInput
   character: CharacterRelateToOneForUpdateInput
   placeOfEvent: PlaceOfEventRelateToOneForUpdateInput
   moralLesson: MoralLessonRelateToOneForUpdateInput
@@ -302,10 +305,16 @@ input StoryUpdateInput {
   readTime: Int
   status: [StoryStatusType!]
   isReady: Boolean
-  createdAt: DateTime
   contentPrompt: String
   imagePrompt: String
   message: String
+  createdAt: DateTime
+}
+
+input PromptRelateToOneForUpdateInput {
+  create: PromptCreateInput
+  connect: PromptWhereUniqueInput
+  disconnect: Boolean
 }
 
 input CharacterRelateToOneForUpdateInput {
@@ -336,6 +345,7 @@ input StoryUpdateArgs {
 
 input StoryCreateInput {
   firebaseUserId: String
+  prompt: PromptRelateToOneForCreateInput
   character: CharacterRelateToOneForCreateInput
   placeOfEvent: PlaceOfEventRelateToOneForCreateInput
   moralLesson: MoralLessonRelateToOneForCreateInput
@@ -345,10 +355,15 @@ input StoryCreateInput {
   readTime: Int
   status: [StoryStatusType!]
   isReady: Boolean
-  createdAt: DateTime
   contentPrompt: String
   imagePrompt: String
   message: String
+  createdAt: DateTime
+}
+
+input PromptRelateToOneForCreateInput {
+  create: PromptCreateInput
+  connect: PromptWhereUniqueInput
 }
 
 input CharacterRelateToOneForCreateInput {
