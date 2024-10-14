@@ -1,8 +1,8 @@
 import { ListHooks } from "@keystone-6/core/types";
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { Lists } from ".keystone/types";
 import { render } from "micromustache";
 import { merge } from "lodash";
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { Lists } from ".keystone/types";
 
 export const resolveInput: ListHooks<Lists.Story.TypeInfo> = {
   resolveInput: async ({ context, resolvedData, operation }) => {
