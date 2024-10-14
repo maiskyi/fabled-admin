@@ -63,6 +63,7 @@ export const resolveInput: ListHooks<Lists.Story.TypeInfo> = {
           imagePrompt,
         });
       } catch (error) {
+        // eslint-disable-next-line no-console
         console.log(error);
       }
     }
