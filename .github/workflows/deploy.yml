@@ -6,27 +6,28 @@ on:
 
 jobs:
   deploy:
+    environment: development
     runs-on: ubuntu-latest
     
     permissions:
-      contents: read
-      id-token: write
+      contents: 'read'
+      id-token: 'write'
     
     steps:
-      # - name: Checkout code
-      #   uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
       
-      # - name: Setup Node 18
-      #   uses: actions/setup-node@v4
-      #   with:
-      #     node-version: 18
-      #     cache: 'yarn'
+      - name: Setup NodeJS
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'yarn'
 
-      # - name: Install deps
-      #   run: yarn
+      - name: Install dependencies
+        run: yarn
 
-      # - name: Build app
-      #   run: yarn build
+      - name: Build application
+        run: yarn build
 
       - name: Auth to Google Cloud
         uses: 'google-github-actions/auth@v2'
@@ -36,7 +37,20 @@ jobs:
       - name: Deploy to Google Cloud App Engine
         uses: google-github-actions/deploy-appengine@v2
         with:
-          deliverables: app.dev.yaml
+          deliverables: ${{ env.CGP_APP_ENGINE_DELIVERABLES }}
           project_id: ${{ secrets.GCP_PROJECT_ID }}
+          env_vars: |-
+            CLOUDINARY_API_KEY=${{ secrets.CLOUDINARY_API_KEY }}
+            CLOUDINARY_API_SECRET=${{ secrets.CLOUDINARY_API_SECRET }}
+            CLOUDINARY_CLOUD_NAME=${{ secrets.CLOUDINARY_CLOUD_NAME }}
+            DATABASE_PROVIDER=${{ env.DATABASE_PROVIDER }}
+            DATABASE_URL=${{ env.DATABASE_URL }}
+            GMAIL_EMAIL=${{ env.GMAIL_EMAIL }}
+            GMAIL_PASSWORD=${{ secrets.GMAIL_PASSWORD }}
+            MAILER_FROM=${{ env.MAILER_FROM }}
+            MAILER_TO=${{ env.MAILER_TO }}
+            OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}
+            SERVER_CORS_ORIGINS=${{ env.SERVER_CORS_ORIGINS }}
+            SESSION_SECRET=${{ secrets.SESSION_SECRET }}
         # RyP(?.7Xf%PG@Ddk
         # Y*:gPX$%h;F=YyP_

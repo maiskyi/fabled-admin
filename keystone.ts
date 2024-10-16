@@ -15,8 +15,8 @@ export default withAuth(
       },
     },
     db: {
-      provider: "sqlite",
-      url: "file:./keystone.db",
+      provider: process.env.DATABASE_PROVIDER,
+      url: process.env.DATABASE_URL,
     },
     graphql: {
       extendGraphqlSchema,

@@ -16,6 +16,8 @@
 .eslint.js
 .github
 README.md
+.tsconfig.json
+.eslintrc.js
 
 # Node.js dependencies:
 node_modules/
