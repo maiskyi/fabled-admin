@@ -3,7 +3,7 @@
   "version": "1.0.3",
   "private": true,
   "scripts": {
-    "act": "act -j check --secret-file .env.secrets --env-file .env --container-architecture linux/amd64",
+    "act": "act -j deploy --secret-file .env.secrets --env-file .env --container-architecture linux/amd64",
     "dev": "env-cmd keystone dev",
     "start": "keystone start",
     "build": "keystone build",
