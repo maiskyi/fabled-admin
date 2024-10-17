@@ -16,11 +16,15 @@
 .eslint.js
 .github/
 README.md
-.tsconfig.json
+tsconfig.json
 .eslintrc.js
-/src
+src/
 docker-compose.yml
 env.d.ts
+.env
+.secrets
+.vars
+keystone.ts
 
 # Node.js dependencies:
 node_modules/
