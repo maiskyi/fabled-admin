@@ -4,3 +4,5 @@ keystone.db
 *.log
 .env
 .env.secrets
+.secrets
+.vars

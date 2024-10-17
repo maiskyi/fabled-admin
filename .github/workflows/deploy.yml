@@ -51,3 +51,10 @@ jobs:
             MAILER_TO=${{ vars.MAILER_TO }}
             OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}
             SESSION_SECRET=${{ secrets.SESSION_SECRET }}
+
+      - name: Remove Cloud App Engine versions
+        uses: Reviewable/appengine-remove-action@v2.1.2
+        with:
+          limit: 3
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+          credentials: ${{ secrets.GCP_CREDENTIALS_JSON }}

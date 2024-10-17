@@ -3,7 +3,7 @@
   "version": "1.0.3",
   "private": true,
   "scripts": {
-    "act": "act -j deploy --secret-file .env.secrets --env-file .env --container-architecture linux/amd64",
+    "act": "act -j deploy --secret-file .secrets --env-file .env --var-file .vars --container-architecture linux/amd64",
     "build": "keystone build",
     "dev": "env-cmd keystone dev",
     "docker": "docker-compose up -d",
