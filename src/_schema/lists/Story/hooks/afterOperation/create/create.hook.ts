@@ -3,6 +3,7 @@ import { ListHooks } from "@keystone-6/core/types";
 import { Lists } from ".keystone/types";
 import { get } from "lodash";
 import { StoryExceptionCode } from "../../../Story.types";
+import { Logger } from "../../../../../../_services";
 import { StoryException } from "./services/StoryException";
 import { StoryStatus } from "./services/StoryStatus";
 import { generateContent } from "./flows/generateContent";
@@ -13,9 +14,9 @@ export const create: ListHooks<Lists.Story.TypeInfo> = {
   afterOperation: {
     create: ({ item, context }) => {
       (async () => {
-        try {
-          const status = new StoryStatus();
+        const status = new StoryStatus();
 
+        try {
           await context.db.Story.updateOne({
             where: { id: item.id },
             data: {
@@ -23,9 +24,13 @@ export const create: ListHooks<Lists.Story.TypeInfo> = {
             },
           });
 
+          Logger.info("Story content in progress", { id: item.id });
+
           const content = await generateContent({
             prompt: item.contentPrompt,
           });
+
+          Logger.info("Story content generated", { id: item.id });
 
           await context.db.Story.updateOne({
             where: { id: item.id },
@@ -35,10 +40,14 @@ export const create: ListHooks<Lists.Story.TypeInfo> = {
             },
           });
 
+          Logger.info("Story image in progress", { id: item.id });
+
           const image = await generateImage({
             title: content.title,
             prompt: item.imagePrompt,
           });
+
+          Logger.info("Story image generated", { id: item.id });
 
           const upload = uploadImage(image);
 
@@ -50,6 +59,8 @@ export const create: ListHooks<Lists.Story.TypeInfo> = {
               status: status.next("success").value,
             },
           });
+
+          Logger.info("Story created", { id: item.id });
         } catch (error) {
           const exception = (() => {
             if (error instanceof StoryException) return error;
@@ -60,8 +71,14 @@ export const create: ListHooks<Lists.Story.TypeInfo> = {
             });
           })();
 
-          // eslint-disable-next-line no-console
-          console.error(exception);
+          await context.db.Story.updateOne({
+            where: { id: item.id },
+            data: {
+              status: status.next(exception.code).value,
+            },
+          });
+
+          Logger.error("Story creation failed", exception);
         }
       })();
     },
