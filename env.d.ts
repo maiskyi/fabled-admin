@@ -4,6 +4,7 @@ declare global {
       CLOUDINARY_API_KEY: string;
       CLOUDINARY_API_SECRET: string;
       CLOUDINARY_CLOUD_NAME: string;
+      CLOUDINARY_FOLDER_ROOT: string;
       DATABASE_PROVIDER: "sqlite" | "postgresql" | "mysql";
       DATABASE_URL: string;
       GMAIL_EMAIL: string;

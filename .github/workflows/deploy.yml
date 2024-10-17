@@ -43,6 +43,7 @@ jobs:
             CLOUDINARY_API_KEY=${{ secrets.CLOUDINARY_API_KEY }}
             CLOUDINARY_API_SECRET=${{ secrets.CLOUDINARY_API_SECRET }}
             CLOUDINARY_CLOUD_NAME=${{ secrets.CLOUDINARY_CLOUD_NAME }}
+            CLOUDINARY_FOLDER_ROOT=${{ env.CLOUDINARY_FOLDER_ROOT }}
             DATABASE_PROVIDER=${{ env.DATABASE_PROVIDER }}
             DATABASE_URL=${{ secrets.DATABASE_URL }}
             GMAIL_EMAIL=${{ env.GMAIL_EMAIL }}
