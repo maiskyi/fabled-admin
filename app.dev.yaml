@@ -6,8 +6,9 @@ instance_class: F2
 beta_settings:
   cloud_sql_instances: fabled-976c8:us-east1:development
 
-manual_scaling:
-  instances: 1
+automatic_scaling:
+  min_num_instances: 1
+  max_num_instances: 2
 
 env_variables:
   SERVER_CORS_ORIGINS: "https://localhost:5173,https://app.dev.fabled.space,capacitor://localhost"
