@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     
     permissions:
-      contents: 'read'
-      id-token: 'write'
+      contents: read
+      id-token: write
     
     steps:
       - name: Checkout code
@@ -30,7 +30,7 @@ jobs:
         run: yarn build
 
       - name: Auth to Google Cloud
-        uses: 'google-github-actions/auth@v2'
+        uses: google-github-actions/auth@v2
         with:
           credentials_json: ${{ secrets.GCP_CREDENTIALS_JSON }}
 
@@ -44,7 +44,7 @@ jobs:
             CLOUDINARY_API_SECRET=${{ secrets.CLOUDINARY_API_SECRET }}
             CLOUDINARY_CLOUD_NAME=${{ secrets.CLOUDINARY_CLOUD_NAME }}
             DATABASE_PROVIDER=${{ env.DATABASE_PROVIDER }}
-            DATABASE_URL=${{ env.DATABASE_URL }}
+            DATABASE_URL=${{ secrets.DATABASE_URL }}
             GMAIL_EMAIL=${{ env.GMAIL_EMAIL }}
             GMAIL_PASSWORD=${{ secrets.GMAIL_PASSWORD }}
             MAILER_FROM=${{ env.MAILER_FROM }}
@@ -52,5 +52,3 @@ jobs:
             OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}
             SERVER_CORS_ORIGINS=${{ env.SERVER_CORS_ORIGINS }}
             SESSION_SECRET=${{ secrets.SESSION_SECRET }}
-        # RyP(?.7Xf%PG@Ddk
-        # Y*:gPX$%h;F=YyP_

@@ -12,12 +12,15 @@
 # below:
 .git
 .gitignore
-.vscode
+.vscode/
 .eslint.js
-.github
+.github/
 README.md
 .tsconfig.json
 .eslintrc.js
+/src
+docker-compose.yml
+env.d.ts
 
 # Node.js dependencies:
 node_modules/

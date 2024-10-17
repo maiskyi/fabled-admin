@@ -15,7 +15,7 @@ export default withAuth(
       },
     },
     db: {
-      provider: process.env.DATABASE_PROVIDER,
+      provider: "postgresql",
       url: process.env.DATABASE_URL,
     },
     graphql: {
