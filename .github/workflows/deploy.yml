@@ -50,5 +50,4 @@ jobs:
             MAILER_FROM=${{ vars.MAILER_FROM }}
             MAILER_TO=${{ vars.MAILER_TO }}
             OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}
-            SERVER_CORS_ORIGINS=${{ vars.SERVER_CORS_ORIGINS }}
             SESSION_SECRET=${{ secrets.SESSION_SECRET }}
