@@ -1,2 +1,10 @@
 runtime: nodejs20
 service: api-development
+instance_class: F1
+
+beta_settings:
+  cloud_sql_instances: fabled-976c8:us-east1:development
+
+automatic_scaling:
+  min_instances: 1
+  max_instances: 1

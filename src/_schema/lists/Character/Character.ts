@@ -27,7 +27,7 @@ export const Character = list({
         cloudName: process.env.CLOUDINARY_CLOUD_NAME,
         apiKey: process.env.CLOUDINARY_API_KEY,
         apiSecret: process.env.CLOUDINARY_API_SECRET,
-        folder: "character",
+        folder: `${process.env.CLOUDINARY_FOLDER_ROOT}/characters`,
       },
     }),
     language: select({
