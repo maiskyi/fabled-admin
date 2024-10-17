@@ -8,3 +8,6 @@ beta_settings:
 automatic_scaling:
   min_instances: 1
   max_instances: 1
+
+env_variables:
+  SERVER_CORS_ORIGINS: "https://localhost:5173,https://app.dev.fabled.space,capacitor://localhost"
