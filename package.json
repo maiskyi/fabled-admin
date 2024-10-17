@@ -6,6 +6,7 @@
     "act": "act -j deploy --secret-file .env.secrets --env-file .env --container-architecture linux/amd64",
     "build": "keystone build",
     "dev": "env-cmd keystone dev",
+    "docker": "docker-compose up -d",
     "lint": "eslint src --max-warnings=0 --fix",
     "migrate": "env-cmd keystone prisma migrate dev",
     "start": "keystone start --with-migrations"
