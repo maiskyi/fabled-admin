@@ -10,6 +10,8 @@ Logger.init({
   environment: process.env.APP_ENVIRONMENT,
 });
 
+Logger.info("Server cors origins", process.env.SERVER_CORS_ORIGINS);
+
 export default withAuth(
   config({
     server: {
