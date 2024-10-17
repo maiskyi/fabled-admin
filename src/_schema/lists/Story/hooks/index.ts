@@ -3,5 +3,5 @@ import { resolveInput } from "./resolveInput";
 
 export const hooks = {
   afterOperation,
-  resolveInput: resolveInput.resolveInput,
+  resolveInput,
 };

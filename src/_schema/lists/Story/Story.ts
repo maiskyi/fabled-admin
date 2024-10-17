@@ -75,7 +75,6 @@ export const Story = list({
       },
     }),
     content: text({
-      isIndexed: true,
       ui: {
         displayMode: "textarea",
         createView: {

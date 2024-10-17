@@ -55,7 +55,6 @@ model Story {
   @@index([placeOfEventId])
   @@index([moralLessonId])
   @@index([title])
-  @@index([content])
 }
 
 model Inquiry {
