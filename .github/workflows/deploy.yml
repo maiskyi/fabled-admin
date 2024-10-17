@@ -40,6 +40,7 @@ jobs:
           deliverables: ${{ vars.CGP_APP_ENGINE_DELIVERABLES }}
           project_id: ${{ secrets.GCP_PROJECT_ID }}
           env_vars: |-
+            APP_ENVIRONMENT=${{ vars.APP_ENVIRONMENT }}
             CLOUDINARY_API_KEY=${{ secrets.CLOUDINARY_API_KEY }}
             CLOUDINARY_API_SECRET=${{ secrets.CLOUDINARY_API_SECRET }}
             CLOUDINARY_CLOUD_NAME=${{ secrets.CLOUDINARY_CLOUD_NAME }}
@@ -50,6 +51,7 @@ jobs:
             MAILER_FROM=${{ vars.MAILER_FROM }}
             MAILER_TO=${{ vars.MAILER_TO }}
             OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}
+            SENTRY_DNS=${{ secrets.SENTRY_DNS }}
             SESSION_SECRET=${{ secrets.SESSION_SECRET }}
 
       - name: Remove Cloud App Engine versions

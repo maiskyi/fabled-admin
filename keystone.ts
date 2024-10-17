@@ -3,6 +3,14 @@ import { config } from "@keystone-6/core";
 import { lists, extendGraphqlSchema } from "./src/_schema";
 import { withAuth, session } from "./src/_auth";
 import { extendHttpServer } from "./src/_server";
+import { Logger } from "./src/_services";
+
+Logger.init({
+  dsn: process.env.SENTRY_DNS,
+  environment: process.env.APP_ENVIRONMENT,
+});
+
+Logger.info("Server cors origins", process.env.SERVER_CORS_ORIGINS);
 
 export default withAuth(
   config({

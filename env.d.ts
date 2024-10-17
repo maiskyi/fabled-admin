@@ -1,6 +1,7 @@
 declare global {
   namespace NodeJS {
     interface ProcessEnv {
+      APP_ENVIRONMENT: string;
       CLOUDINARY_API_KEY: string;
       CLOUDINARY_API_SECRET: string;
       CLOUDINARY_CLOUD_NAME: string;
@@ -12,6 +13,7 @@ declare global {
       MAILER_FROM: string;
       MAILER_TO: string;
       NODE_ENV: "development" | "production";
+      SENTRY_DNS: string;
       SERVER_CORS_ORIGINS: string;
       SESSION_SECRET: string;
     }
