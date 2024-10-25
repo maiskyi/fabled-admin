@@ -13,8 +13,8 @@ export const update: ListHooks<Lists.Story.TypeInfo> = {
 
         const count = await context.db.Story.count({
           where: {
-            isReady: {
-              equals: true,
+            status: {
+              equals: "success",
             },
             firebaseUserId: {
               equals: item.firebaseUserId,

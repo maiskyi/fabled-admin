@@ -1,10 +1,10 @@
 import { list } from "@keystone-6/core";
-import { allowAll } from "@keystone-6/core/access";
 import { text } from "@keystone-6/core/fields";
+import { access } from "./access";
 
 export const Config = list({
   isSingleton: true,
-  access: allowAll,
+  access,
   fields: {
     privacyPolicyUrl: text({
       validation: {

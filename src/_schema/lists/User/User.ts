@@ -1,9 +1,9 @@
 import { list } from "@keystone-6/core";
-import { allowAll } from "@keystone-6/core/access";
 import { text, password, timestamp } from "@keystone-6/core/fields";
+import { access } from "./access";
 
 export const User = list({
-  access: allowAll,
+  access,
   fields: {
     name: text({ validation: { isRequired: true } }),
     email: text({
