@@ -4,12 +4,16 @@ import {
   text,
   multiselect,
   timestamp,
-  checkbox,
   select,
   relationship,
 } from "@keystone-6/core/fields";
 import { cloudinaryImage } from "@keystone-6/cloudinary";
-import { READ_TIME_OPTIONS, STATUS_OPTIONS } from "./Story.const";
+import {
+  READ_TIME_OPTIONS,
+  STATUS_LOG_OPTIONS,
+  STATUS_OPTIONS,
+} from "./Story.const";
+import { StoryStatusLog, StoryStatus } from "./Story.types";
 import { hooks } from "./hooks";
 
 export const Story = list({
@@ -116,9 +120,9 @@ export const Story = list({
         },
       },
     }),
-    status: multiselect({
+    status: select({
       type: "enum",
-      defaultValue: ["initialized"],
+      defaultValue: StoryStatus.InProgress,
       ui: {
         createView: {
           fieldMode: "hidden",
@@ -129,8 +133,9 @@ export const Story = list({
       },
       options: STATUS_OPTIONS,
     }),
-    isReady: checkbox({
-      defaultValue: false,
+    statusLog: multiselect({
+      type: "enum",
+      defaultValue: [StoryStatusLog.Initialized],
       ui: {
         createView: {
           fieldMode: "hidden",
@@ -139,6 +144,7 @@ export const Story = list({
           fieldMode: "read",
         },
       },
+      options: STATUS_LOG_OPTIONS,
     }),
     contentPrompt: text({
       validation: {

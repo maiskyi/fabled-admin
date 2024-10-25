@@ -1,1 +1,1 @@
-export { StoryStatus } from "./StoryStatus.service";
+export { StoryStatusLog } from "./StoryStatusLog.service";

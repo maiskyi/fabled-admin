@@ -1,4 +1,9 @@
-import { StoryReadTime, StoryStatus } from "./Story.types";
+import {
+  StoryReadTime,
+  StoryStatusLog,
+  StoryExceptionCode,
+  StoryStatus,
+} from "./Story.types";
 
 export const READ_TIME_OPTIONS = [
   {
@@ -17,19 +22,66 @@ export const READ_TIME_OPTIONS = [
 
 export const STATUS_OPTIONS = [
   {
-    label: "Initialized",
-    value: StoryStatus.Initialized,
-  },
-  {
-    label: "Content in progress",
-    value: StoryStatus.ContentInProgress,
-  },
-  {
-    label: "Image in progress",
-    value: StoryStatus.ImageInProgress,
+    label: "In progress",
+    value: StoryStatus.InProgress,
   },
   {
     label: "Success",
     value: StoryStatus.Success,
+  },
+  {
+    label: "Failed",
+    value: StoryStatus.Failed,
+  },
+];
+
+export const STATUS_LOG_OPTIONS = [
+  {
+    label: "Initialized",
+    value: StoryStatusLog.Initialized,
+  },
+  {
+    label: "Content in progress",
+    value: StoryStatusLog.ContentInProgress,
+  },
+  {
+    label: "Image in progress",
+    value: StoryStatusLog.ImageInProgress,
+  },
+  {
+    label: "Success",
+    value: StoryStatusLog.Success,
+  },
+  {
+    label: "Create Story Request Failed",
+    value: StoryExceptionCode.CreateStoryRequestFailed,
+  },
+  {
+    label: "Story Content Generation Failed",
+    value: StoryExceptionCode.StoryContentGenerationFailed,
+  },
+  {
+    label: "Story Content Generation Failed With No Result",
+    value: StoryExceptionCode.StoryContentGenerationFailedWithNoResult,
+  },
+  {
+    label: "Story Generation Failed",
+    value: StoryExceptionCode.StoryGenerationFailed,
+  },
+  {
+    label: "Story Image Generation Failed",
+    value: StoryExceptionCode.StoryImageGenerationFailed,
+  },
+  {
+    label: "Story Image Generation Failed With No Result",
+    value: StoryExceptionCode.StoryImageGenerationFailedWithNoResult,
+  },
+  {
+    label: "Story Image Upload Failed",
+    value: StoryExceptionCode.StoryImageUploadFailed,
+  },
+  {
+    label: "Story Image Uploading To Cloudinary Failed",
+    value: StoryExceptionCode.StoryImageUploadingToCloudinaryFailed,
   },
 ];

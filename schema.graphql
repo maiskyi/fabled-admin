@@ -194,8 +194,8 @@ type Story {
   content: String
   image: CloudinaryImage_File
   readTime: Int
-  status: [StoryStatusType!]
-  isReady: Boolean
+  status: StoryStatusType
+  statusLog: [StoryStatusLogType!]
   contentPrompt: String
   imagePrompt: String
   message: String
@@ -251,10 +251,24 @@ input CloudinaryImageFormat {
 }
 
 enum StoryStatusType {
+  inprogress
+  success
+  failed
+}
+
+enum StoryStatusLogType {
   initialized
   contentInProgress
   imageInProgress
   success
+  createStoryRequestFailed
+  storyContentGenerationFailed
+  storyContentGenerationFailedWithNoResult
+  storyGenerationFailed
+  storyImageGenerationFailed
+  storyImageGenerationFailedWithNoResult
+  storyImageUploadFailed
+  storyImageUploadingToCloudinaryFailed
 }
 
 input StoryWhereUniqueInput {
@@ -274,16 +288,18 @@ input StoryWhereInput {
   title: StringFilter
   content: StringFilter
   readTime: IntFilter
-  isReady: BooleanFilter
+  status: StoryStatusTypeNullableFilter
   contentPrompt: StringFilter
   imagePrompt: StringFilter
   message: StringFilter
   createdAt: DateTimeNullableFilter
 }
 
-input BooleanFilter {
-  equals: Boolean
-  not: BooleanFilter
+input StoryStatusTypeNullableFilter {
+  equals: StoryStatusType
+  in: [StoryStatusType!]
+  notIn: [StoryStatusType!]
+  not: StoryStatusTypeNullableFilter
 }
 
 input StoryOrderByInput {
@@ -292,7 +308,7 @@ input StoryOrderByInput {
   title: OrderDirection
   content: OrderDirection
   readTime: OrderDirection
-  isReady: OrderDirection
+  status: OrderDirection
   contentPrompt: OrderDirection
   imagePrompt: OrderDirection
   message: OrderDirection
@@ -309,8 +325,8 @@ input StoryUpdateInput {
   content: String
   image: Upload
   readTime: Int
-  status: [StoryStatusType!]
-  isReady: Boolean
+  status: StoryStatusType
+  statusLog: [StoryStatusLogType!]
   contentPrompt: String
   imagePrompt: String
   message: String
@@ -359,8 +375,8 @@ input StoryCreateInput {
   content: String
   image: Upload
   readTime: Int
-  status: [StoryStatusType!]
-  isReady: Boolean
+  status: StoryStatusType
+  statusLog: [StoryStatusLogType!]
   contentPrompt: String
   imagePrompt: String
   message: String
@@ -472,6 +488,11 @@ input CharacterLanguageTypeNullableFilter {
   in: [CharacterLanguageType!]
   notIn: [CharacterLanguageType!]
   not: CharacterLanguageTypeNullableFilter
+}
+
+input BooleanFilter {
+  equals: Boolean
+  not: BooleanFilter
 }
 
 input CharacterOrderByInput {

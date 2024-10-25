@@ -5,7 +5,7 @@ import { get } from "lodash";
 import { StoryExceptionCode } from "../../../Story.types";
 import { Logger } from "../../../../../../_services";
 import { StoryException } from "./services/StoryException";
-import { StoryStatus } from "./services/StoryStatus";
+import { StoryStatusLog } from "./services/StoryStatus";
 import { generateContent } from "./flows/generateContent";
 import { generateImage } from "./flows/generateImage";
 import { uploadImage } from "./flows/uploadImage";
@@ -14,13 +14,13 @@ export const create: ListHooks<Lists.Story.TypeInfo> = {
   afterOperation: {
     create: ({ item, context }) => {
       (async () => {
-        const status = new StoryStatus();
+        const statusLog = new StoryStatusLog();
 
         try {
           await context.db.Story.updateOne({
             where: { id: item.id },
             data: {
-              status: status.next("contentInProgress").value,
+              statusLog: statusLog.next("contentInProgress").value,
             },
           });
 
@@ -36,7 +36,7 @@ export const create: ListHooks<Lists.Story.TypeInfo> = {
             where: { id: item.id },
             data: {
               ...content,
-              status: status.next("imageInProgress").value,
+              statusLog: statusLog.next("imageInProgress").value,
             },
           });
 
@@ -55,8 +55,8 @@ export const create: ListHooks<Lists.Story.TypeInfo> = {
             where: { id: item.id },
             data: {
               image: upload,
-              isReady: true,
-              status: status.next("success").value,
+              status: "success",
+              statusLog: statusLog.next("success").value,
             },
           });
 
@@ -74,7 +74,8 @@ export const create: ListHooks<Lists.Story.TypeInfo> = {
           await context.db.Story.updateOne({
             where: { id: item.id },
             data: {
-              status: status.next(exception.code).value,
+              status: "failed",
+              statusLog: statusLog.next(exception.code).value,
             },
           });
 
