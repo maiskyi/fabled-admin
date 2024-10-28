@@ -5,6 +5,6 @@ import { access as get } from "../../lists.access";
 export const access = get<Lists.Feedback.TypeInfo>({
   operation: {
     create: () => true,
-    query: ({ session }) => session,
+    query: ({ session }) => !!session,
   },
 });
