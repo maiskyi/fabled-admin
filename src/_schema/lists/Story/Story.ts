@@ -1,5 +1,4 @@
 import { list } from "@keystone-6/core";
-import { allowAll } from "@keystone-6/core/access";
 import {
   text,
   multiselect,
@@ -15,9 +14,10 @@ import {
 } from "./Story.const";
 import { StoryStatusLog, StoryStatus } from "./Story.types";
 import { hooks } from "./hooks";
+import { access } from "./access";
 
 export const Story = list({
-  access: allowAll,
+  access,
   ui: {
     // hideCreate: true,
     listView: {

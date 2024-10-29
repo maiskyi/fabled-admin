@@ -16,6 +16,7 @@ model User {
   name      String    @default("")
   email     String    @unique @default("")
   password  String
+  isAdmin   Boolean   @default(true)
   createdAt DateTime? @default(now())
 }
 

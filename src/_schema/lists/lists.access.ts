@@ -8,10 +8,10 @@ export const access = <T extends BaseListTypeInfo>(
   return merge<ListAccessControl<T>, PartialDeep<ListAccessControl<T>>>(
     {
       operation: {
-        create: ({ session }) => !!session,
-        delete: ({ session }) => !!session,
+        create: ({ session }) => !!session?.data?.isAdmin,
+        delete: ({ session }) => !!session?.data?.isAdmin,
         query: () => true,
-        update: ({ session }) => !!session,
+        update: ({ session }) => !!session?.data?.isAdmin,
       },
     },
     params
