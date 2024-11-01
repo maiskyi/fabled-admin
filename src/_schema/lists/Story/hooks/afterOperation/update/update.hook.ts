@@ -7,10 +7,6 @@ export const update: ListHooks<Lists.Story.TypeInfo> = {
   afterOperation: {
     update: ({ item, context }) => {
       (async () => {
-        pubsub.publish(item.id, {
-          storyUpdated: item,
-        });
-
         const count = await context.db.Story.count({
           where: {
             status: {

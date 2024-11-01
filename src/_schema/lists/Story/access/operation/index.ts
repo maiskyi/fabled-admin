@@ -4,6 +4,7 @@ import { Lists } from ".keystone/types";
 import { PartialDeep } from "type-fest";
 import { merge } from "lodash";
 import { create } from "./create";
+import { update } from "./update";
 
 export const operation: PartialDeep<ListAccessControl<Lists.Story.TypeInfo>> =
-  merge(create);
+  merge(create, update);

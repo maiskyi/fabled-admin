@@ -3,8 +3,8 @@ import { ListAccessControl } from "@keystone-6/core/types";
 import { Lists } from ".keystone/types";
 import { PartialDeep } from "type-fest";
 
-export const create: PartialDeep<ListAccessControl<Lists.Story.TypeInfo>> = {
+export const update: PartialDeep<ListAccessControl<Lists.Story.TypeInfo>> = {
   operation: {
-    create: async () => true,
+    update: async () => true,
   },
 };

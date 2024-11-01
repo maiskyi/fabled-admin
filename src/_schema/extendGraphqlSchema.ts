@@ -8,22 +8,11 @@ export const extendGraphqlSchema = (schema: GraphQLSchema) =>
     schemas: [schema],
     typeDefs: `
       type Subscription {
-        storyUpdated(id: ID!): Story
         userStoriesCountUpdated(id: ID!): Int
       }
     `,
     resolvers: {
       Subscription: {
-        storyUpdated: {
-          args: {
-            id: {
-              type: GraphQLString,
-            },
-          },
-          subscribe: (_, args: StoryUpdatedArgs) => {
-            return pubsub.asyncIterator(args.id);
-          },
-        },
         userStoriesCountUpdated: {
           args: {
             id: {
