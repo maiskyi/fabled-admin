@@ -1,10 +1,10 @@
 import { list } from "@keystone-6/core";
-import { allowAll } from "@keystone-6/core/access";
 import { text, timestamp, select, checkbox } from "@keystone-6/core/fields";
 import { LANGUAGE_OPTIONS } from "../lists.const";
+import { access } from "./access";
 
 export const MoralLesson = list({
-  access: allowAll,
+  access,
   ui: {
     listView: {
       initialColumns: ["title", "language"],

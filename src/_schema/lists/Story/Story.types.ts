@@ -1,8 +1,14 @@
-export enum StoryStatus {
+export enum StoryStatusLog {
   Initialized = "initialized",
   ContentInProgress = "contentInProgress",
   ImageInProgress = "imageInProgress",
   Success = "success",
+}
+
+export enum StoryStatus {
+  InProgress = "inprogress",
+  Success = "success",
+  Failed = "failed",
 }
 
 export enum StoryExceptionCode {

@@ -1,9 +1,9 @@
 import { list } from "@keystone-6/core";
-import { allowAll } from "@keystone-6/core/access";
-import { text, password, timestamp } from "@keystone-6/core/fields";
+import { text, password, timestamp, checkbox } from "@keystone-6/core/fields";
+import { access } from "./access";
 
 export const User = list({
-  access: allowAll,
+  access,
   fields: {
     name: text({ validation: { isRequired: true } }),
     email: text({
@@ -11,6 +11,9 @@ export const User = list({
       isIndexed: "unique",
     }),
     password: password({ validation: { isRequired: true } }),
+    isAdmin: checkbox({
+      defaultValue: true,
+    }),
     createdAt: timestamp({
       defaultValue: { kind: "now" },
     }),

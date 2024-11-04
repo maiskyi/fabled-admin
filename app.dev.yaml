@@ -1,10 +1,6 @@
 runtime: nodejs
-env: flex
-service: ks-dev
+service: api-dev
 instance_class: F2
-
-runtime_config:
-  operating_system: ubuntu22
 
 beta_settings:
   cloud_sql_instances: fabled-976c8:us-east1:development
@@ -14,4 +10,4 @@ automatic_scaling:
   max_num_instances: 2
 
 env_variables:
-  SERVER_CORS_ORIGINS: "https://localhost:5173,https://app.dev.fabled.space,capacitor://localhost"
+  SERVER_CORS_ORIGINS: "https://localhost:5173,http://localhost:5173,https://app.dev.fabled.space,capacitor://localhost"

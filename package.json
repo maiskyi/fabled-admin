@@ -28,6 +28,7 @@
     "micromustache": "^8.0.3",
     "nodemailer": "^6.9.14",
     "openai": "^4.57.1",
+    "type-fest": "^4.26.1",
     "winston": "^3.15.0",
     "winston-transport-sentry-node": "^3.0.0",
     "ws": "^8.18.0",

@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { StoryStatusType } from ".keystone/types";
+import { StoryStatusLogType } from ".keystone/types";
 
 /**
  * Description placeholder
@@ -8,8 +8,8 @@ import { StoryStatusType } from ".keystone/types";
  * @class Status
  * @typedef {Status}
  */
-export class StoryStatus {
-  public value: StoryStatusType[] = [];
+export class StoryStatusLog {
+  public value: StoryStatusLogType[] = [];
 
   /**
    * Creates an instance of Status.
@@ -26,7 +26,7 @@ export class StoryStatus {
    * @param {DTO.FableStatus} v
    * @return {this}
    */
-  public next = (v: StoryStatusType) => {
+  public next = (v: StoryStatusLogType) => {
     this.value = [...this.value, v];
     return this;
   };

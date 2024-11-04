@@ -6,6 +6,7 @@ type User {
   name: String
   email: String
   password: PasswordState
+  isAdmin: Boolean
   createdAt: DateTime
 }
 
@@ -27,6 +28,7 @@ input UserWhereInput {
   id: IDFilter
   name: StringFilter
   email: StringFilter
+  isAdmin: BooleanFilter
   createdAt: DateTimeNullableFilter
 }
 
@@ -75,6 +77,11 @@ input NestedStringFilter {
   not: NestedStringFilter
 }
 
+input BooleanFilter {
+  equals: Boolean
+  not: BooleanFilter
+}
+
 input DateTimeNullableFilter {
   equals: DateTime
   in: [DateTime!]
@@ -90,6 +97,7 @@ input UserOrderByInput {
   id: OrderDirection
   name: OrderDirection
   email: OrderDirection
+  isAdmin: OrderDirection
   createdAt: OrderDirection
 }
 
@@ -102,6 +110,7 @@ input UserUpdateInput {
   name: String
   email: String
   password: String
+  isAdmin: Boolean
   createdAt: DateTime
 }
 
@@ -114,6 +123,7 @@ input UserCreateInput {
   name: String
   email: String
   password: String
+  isAdmin: Boolean
   createdAt: DateTime
 }
 
@@ -194,8 +204,8 @@ type Story {
   content: String
   image: CloudinaryImage_File
   readTime: Int
-  status: [StoryStatusType!]
-  isReady: Boolean
+  status: StoryStatusType
+  statusLog: [StoryStatusLogType!]
   contentPrompt: String
   imagePrompt: String
   message: String
@@ -251,10 +261,24 @@ input CloudinaryImageFormat {
 }
 
 enum StoryStatusType {
+  inprogress
+  success
+  failed
+}
+
+enum StoryStatusLogType {
   initialized
   contentInProgress
   imageInProgress
   success
+  createStoryRequestFailed
+  storyContentGenerationFailed
+  storyContentGenerationFailedWithNoResult
+  storyGenerationFailed
+  storyImageGenerationFailed
+  storyImageGenerationFailedWithNoResult
+  storyImageUploadFailed
+  storyImageUploadingToCloudinaryFailed
 }
 
 input StoryWhereUniqueInput {
@@ -274,16 +298,18 @@ input StoryWhereInput {
   title: StringFilter
   content: StringFilter
   readTime: IntFilter
-  isReady: BooleanFilter
+  status: StoryStatusTypeNullableFilter
   contentPrompt: StringFilter
   imagePrompt: StringFilter
   message: StringFilter
   createdAt: DateTimeNullableFilter
 }
 
-input BooleanFilter {
-  equals: Boolean
-  not: BooleanFilter
+input StoryStatusTypeNullableFilter {
+  equals: StoryStatusType
+  in: [StoryStatusType!]
+  notIn: [StoryStatusType!]
+  not: StoryStatusTypeNullableFilter
 }
 
 input StoryOrderByInput {
@@ -292,7 +318,7 @@ input StoryOrderByInput {
   title: OrderDirection
   content: OrderDirection
   readTime: OrderDirection
-  isReady: OrderDirection
+  status: OrderDirection
   contentPrompt: OrderDirection
   imagePrompt: OrderDirection
   message: OrderDirection
@@ -309,8 +335,8 @@ input StoryUpdateInput {
   content: String
   image: Upload
   readTime: Int
-  status: [StoryStatusType!]
-  isReady: Boolean
+  status: StoryStatusType
+  statusLog: [StoryStatusLogType!]
   contentPrompt: String
   imagePrompt: String
   message: String
@@ -359,8 +385,8 @@ input StoryCreateInput {
   content: String
   image: Upload
   readTime: Int
-  status: [StoryStatusType!]
-  isReady: Boolean
+  status: StoryStatusType
+  statusLog: [StoryStatusLogType!]
   contentPrompt: String
   imagePrompt: String
   message: String
@@ -994,6 +1020,5 @@ enum KeystoneAdminUISortDirection {
 }
 
 type Subscription {
-  storyUpdated(id: String): Story
   userStoriesCountUpdated(id: String): Int
 }
