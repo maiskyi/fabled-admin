@@ -3,7 +3,6 @@ import { config } from "@keystone-6/core";
 import { get } from "lodash";
 import { lists, extendGraphqlSchema } from "./src/_schema";
 import { withAuth, session } from "./src/_auth";
-import { extendHttpServer } from "./src/_server";
 import { Logger } from "./src/_services";
 
 Logger.init({
@@ -19,7 +18,6 @@ const origin = get(process.env, "SERVER_CORS_ORIGINS", "")
 export default withAuth(
   config({
     server: {
-      extendHttpServer,
       cors: {
         origin,
       },
