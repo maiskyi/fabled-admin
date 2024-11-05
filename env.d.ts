@@ -13,6 +13,9 @@ declare global {
       MAILER_FROM: string;
       MAILER_TO: string;
       NODE_ENV: "development" | "production";
+      REVENUECAT_API_HOST: string;
+      REVENUECAT_API_KEY: string;
+      REVENUECAT_PROJECT_ID: string;
       SENTRY_DNS: string;
       SERVER_CORS_ORIGINS: string;
       SESSION_SECRET: string;
