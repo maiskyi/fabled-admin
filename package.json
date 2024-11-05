@@ -9,7 +9,8 @@
     "docker": "docker-compose up -d",
     "lint": "eslint src --max-warnings=0 --fix",
     "migrate": "env-cmd keystone prisma migrate dev",
-    "start": "keystone start --with-migrations"
+    "start": "keystone start --with-migrations",
+    "gen": "orval --config ./orval.config.js"
   },
   "dependencies": {
     "@graphql-tools/schema": "^10.0.6",
@@ -20,6 +21,7 @@
     "@sentry/node": "^8.34.0",
     "@sentry/profiling-node": "^8.34.0",
     "@types/ws": "^8.5.12",
+    "axios": "^1.7.7",
     "got": "11.8.6",
     "graphql": "^16.9.0",
     "graphql-subscriptions": "^2.0.0",
@@ -45,6 +47,7 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-prettier": "^5.2.1",
+    "orval": "^7.2.0",
     "prettier": "^3.3.3",
     "typescript": "^5.5.0"
   }
