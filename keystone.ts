@@ -4,6 +4,10 @@ import { get } from "lodash";
 import { lists, extendGraphqlSchema } from "./src/_schema";
 import { withAuth, session } from "./src/_auth";
 import { Logger } from "./src/_services";
+import { App, ServiceAccount } from "./src/_firebase";
+import serviceAccount from "./firebase-adminsdk.json";
+
+App.init({ serviceAccount: serviceAccount as ServiceAccount });
 
 Logger.init({
   dsn: process.env.SENTRY_DNS,
