@@ -1,5 +1,5 @@
 runtime: nodejs20
-service: api-development
+service: admin-development
 instance_class: F1
 
 beta_settings:
