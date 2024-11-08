@@ -3,25 +3,29 @@ name: Deploy
 on:
   push:
     branches: main
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: environment
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: development
-    
+    environment: ${{ github.event.inputs.environment || 'development' }}
+
     permissions:
       contents: read
       id-token: write
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      
+
       - name: Setup NodeJS
         uses: actions/setup-node@v4
         with:
           node-version: 18
-          cache: 'yarn'
+          cache: "yarn"
 
       - name: Install dependencies
         run: yarn
