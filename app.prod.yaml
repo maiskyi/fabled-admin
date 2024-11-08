@@ -1,0 +1,12 @@
+runtime: nodejs20
+service: admin-production
+instance_class: F2
+
+beta_settings:
+  cloud_sql_instances: fabled-976c8:us-east1:production
+
+automatic_scaling:
+  min_instances: 1
+
+env_variables:
+  SERVER_CORS_ORIGINS: "https://app.fabled.space,capacitor://localhost"
