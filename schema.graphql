@@ -1018,7 +1018,3 @@ enum KeystoneAdminUISortDirection {
   ASC
   DESC
 }
-
-type Subscription {
-  userStoriesCountUpdated(id: String): Int
-}

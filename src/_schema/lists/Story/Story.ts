@@ -7,6 +7,7 @@ import {
   relationship,
 } from "@keystone-6/core/fields";
 import { cloudinaryImage } from "@keystone-6/cloudinary";
+import { allowAll } from "@keystone-6/core/access";
 import {
   READ_TIME_OPTIONS,
   STATUS_LOG_OPTIONS,
@@ -14,12 +15,11 @@ import {
 } from "./Story.const";
 import { StoryStatusLog, StoryStatus } from "./Story.types";
 import { hooks } from "./hooks";
-import { access } from "./access";
 
 export const Story = list({
-  access,
+  access: allowAll,
   ui: {
-    // hideCreate: true,
+    hideCreate: true,
     listView: {
       initialColumns: ["title"],
     },
