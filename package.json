@@ -21,21 +21,16 @@
     "@sentry/node": "^8.34.0",
     "@sentry/profiling-node": "^8.34.0",
     "@types/ws": "^8.5.12",
-    "axios": "^1.7.7",
     "firebase-admin": "^12.7.0",
     "got": "11.8.6",
     "graphql": "^16.9.0",
-    "graphql-subscriptions": "^2.0.0",
-    "graphql-ws": "^5.16.0",
     "lodash": "^4.17.21",
     "micromustache": "^8.0.3",
     "nodemailer": "^6.9.14",
     "openai": "^4.57.1",
     "type-fest": "^4.26.1",
     "winston": "^3.15.0",
-    "winston-transport-sentry-node": "^3.0.0",
-    "ws": "^8.18.0",
-    "zod": "^3.23.8"
+    "winston-transport-sentry-node": "^3.0.0"
   },
   "devDependencies": {
     "@types/lodash": "^4.17.7",
@@ -48,7 +43,6 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-prettier": "^5.2.1",
-    "orval": "^7.2.0",
     "prettier": "^3.3.3",
     "typescript": "^5.5.0"
   }
