@@ -64,6 +64,6 @@ jobs:
       - name: Remove Cloud App Engine versions
         uses: Reviewable/appengine-remove-action@v2.1.2
         with:
-          limit: 3
+          limit: 1
           project_id: ${{ secrets.GCP_PROJECT_ID }}
           credentials: ${{ secrets.GCP_CREDENTIALS_JSON }}
