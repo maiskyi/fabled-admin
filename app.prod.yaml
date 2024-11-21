@@ -1,5 +1,5 @@
 runtime: nodejs20
-service: ks-production
+service: ks-prod
 instance_class: F2
 
 beta_settings:
@@ -7,6 +7,7 @@ beta_settings:
 
 automatic_scaling:
   min_instances: 1
+  max_instances: 1
 
 env_variables:
   SERVER_CORS_ORIGINS: "https://app.fabled.space,capacitor://localhost"
