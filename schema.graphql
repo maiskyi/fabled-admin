@@ -196,6 +196,7 @@ input FeedbackCreateInput {
 type Story {
   id: ID!
   firebaseUserId: String
+  parent: Story
   prompt: Prompt
   character: Character
   placeOfEvent: PlaceOfEvent
@@ -291,6 +292,7 @@ input StoryWhereInput {
   NOT: [StoryWhereInput!]
   id: IDFilter
   firebaseUserId: StringFilter
+  parent: StoryWhereInput
   prompt: PromptWhereInput
   character: CharacterWhereInput
   placeOfEvent: PlaceOfEventWhereInput
@@ -327,6 +329,7 @@ input StoryOrderByInput {
 
 input StoryUpdateInput {
   firebaseUserId: String
+  parent: StoryRelateToOneForUpdateInput
   prompt: PromptRelateToOneForUpdateInput
   character: CharacterRelateToOneForUpdateInput
   placeOfEvent: PlaceOfEventRelateToOneForUpdateInput
@@ -341,6 +344,12 @@ input StoryUpdateInput {
   imagePrompt: String
   message: String
   createdAt: DateTime
+}
+
+input StoryRelateToOneForUpdateInput {
+  create: StoryCreateInput
+  connect: StoryWhereUniqueInput
+  disconnect: Boolean
 }
 
 input PromptRelateToOneForUpdateInput {
@@ -377,6 +386,7 @@ input StoryUpdateArgs {
 
 input StoryCreateInput {
   firebaseUserId: String
+  parent: StoryRelateToOneForCreateInput
   prompt: PromptRelateToOneForCreateInput
   character: CharacterRelateToOneForCreateInput
   placeOfEvent: PlaceOfEventRelateToOneForCreateInput
@@ -391,6 +401,11 @@ input StoryCreateInput {
   imagePrompt: String
   message: String
   createdAt: DateTime
+}
+
+input StoryRelateToOneForCreateInput {
+  create: StoryCreateInput
+  connect: StoryWhereUniqueInput
 }
 
 input PromptRelateToOneForCreateInput {

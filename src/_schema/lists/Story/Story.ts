@@ -35,6 +35,14 @@ export const Story = list({
         isRequired: true,
       },
     }),
+    parent: relationship({
+      ref: "Story",
+      ui: {
+        itemView: {
+          fieldMode: "read",
+        },
+      },
+    }),
     prompt: relationship({
       ref: "Prompt",
       ui: {
