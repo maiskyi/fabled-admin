@@ -21,6 +21,11 @@ export default withAuth(
       cors: {
         origin,
       },
+      extendExpressApp: (app) => {
+        app.get("/api/health-check", (_, res) => {
+          res.status(200).send("Ok");
+        });
+      },
     },
     db: {
       provider: "postgresql",
