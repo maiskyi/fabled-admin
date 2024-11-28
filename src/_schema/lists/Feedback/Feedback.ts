@@ -1,10 +1,9 @@
 import { list } from "@keystone-6/core";
 import { text, timestamp, integer } from "@keystone-6/core/fields";
-import { hooks } from "./hooks";
-import { access } from "./access";
+import { allowAll } from "@keystone-6/core/access";
 
 export const Feedback = list({
-  access,
+  access: allowAll,
   ui: {
     hideCreate: true,
   },
@@ -63,5 +62,4 @@ export const Feedback = list({
       },
     }),
   },
-  hooks: hooks,
 });
