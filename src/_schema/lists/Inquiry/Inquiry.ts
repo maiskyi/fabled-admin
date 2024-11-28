@@ -1,10 +1,9 @@
 import { list } from "@keystone-6/core";
 import { text, timestamp } from "@keystone-6/core/fields";
-import { hooks } from "./hooks";
-import { access } from "./access";
+import { allowAll } from "@keystone-6/core/access";
 
 export const Inquiry = list({
-  access,
+  access: allowAll,
   ui: {
     hideCreate: true,
   },
@@ -51,5 +50,4 @@ export const Inquiry = list({
       },
     }),
   },
-  hooks: hooks,
 });
