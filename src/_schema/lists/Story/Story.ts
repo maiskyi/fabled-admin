@@ -19,7 +19,6 @@ import { hooks } from "./hooks";
 export const Story = list({
   access: allowAll,
   ui: {
-    hideCreate: true,
     listView: {
       initialColumns: ["title"],
     },
@@ -37,78 +36,31 @@ export const Story = list({
     }),
     parent: relationship({
       ref: "Story",
-      ui: {
-        itemView: {
-          fieldMode: "read",
-        },
-      },
     }),
     prompt: relationship({
       ref: "Prompt",
-      ui: {
-        itemView: {
-          fieldMode: "read",
-        },
-      },
     }),
     character: relationship({
       ref: "Character",
-      ui: {
-        itemView: {
-          fieldMode: "read",
-        },
-      },
     }),
     placeOfEvent: relationship({
       ref: "PlaceOfEvent",
-      ui: {
-        itemView: {
-          fieldMode: "read",
-        },
-      },
     }),
     moralLesson: relationship({
       ref: "MoralLesson",
-      ui: {
-        itemView: {
-          fieldMode: "read",
-        },
-      },
     }),
     title: text({
       isIndexed: true,
-      ui: {
-        createView: {
-          fieldMode: "hidden",
-        },
-        itemView: {
-          fieldMode: "read",
-        },
-      },
     }),
     content: text({
       ui: {
         displayMode: "textarea",
-        createView: {
-          fieldMode: "hidden",
-        },
-        itemView: {
-          fieldMode: "read",
-        },
         listView: {
           fieldMode: "hidden",
         },
       },
     }),
     image: cloudinaryImage({
-      ui: {
-        createView: {
-          fieldMode: "hidden",
-        },
-        itemView: {
-          fieldMode: "read",
-        },
-      },
       cloudinary: {
         cloudName: process.env.CLOUDINARY_CLOUD_NAME,
         apiKey: process.env.CLOUDINARY_API_KEY,
@@ -131,27 +83,11 @@ export const Story = list({
     status: select({
       type: "enum",
       defaultValue: StoryStatus.InProgress,
-      ui: {
-        createView: {
-          fieldMode: "hidden",
-        },
-        itemView: {
-          fieldMode: "read",
-        },
-      },
       options: STATUS_OPTIONS,
     }),
     statusLog: multiselect({
       type: "enum",
       defaultValue: [StoryStatusLog.Initialized],
-      ui: {
-        createView: {
-          fieldMode: "hidden",
-        },
-        itemView: {
-          fieldMode: "read",
-        },
-      },
       options: STATUS_LOG_OPTIONS,
     }),
     contentPrompt: text({
@@ -160,9 +96,6 @@ export const Story = list({
       },
       ui: {
         displayMode: "textarea",
-        itemView: {
-          fieldMode: "read",
-        },
       },
     }),
     imagePrompt: text({
@@ -171,9 +104,6 @@ export const Story = list({
       },
       ui: {
         displayMode: "textarea",
-        itemView: {
-          fieldMode: "read",
-        },
       },
     }),
     message: text({
@@ -182,9 +112,6 @@ export const Story = list({
       },
       ui: {
         displayMode: "textarea",
-        itemView: {
-          fieldMode: "read",
-        },
       },
     }),
     createdAt: timestamp({
