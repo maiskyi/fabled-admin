@@ -24,43 +24,55 @@ export const create: ListHooks<Lists.Story.TypeInfo> = {
             },
           });
 
-          Logger.info("Story content in progress", { id: item.id });
+          const content = await (async () => {
+            if (!item.title && !item.content) {
+              Logger.info("Story content in progress", { id: item.id });
 
-          const content = await generateContent({
-            prompt: item.contentPrompt,
-          });
+              const content = await generateContent({
+                prompt: item.contentPrompt,
+              });
 
-          Logger.info("Story content generated", { id: item.id });
+              Logger.info("Story content generated", { id: item.id });
 
-          await context.db.Story.updateOne({
-            where: { id: item.id },
-            data: {
-              ...content,
-              statusLog: statusLog.next("imageInProgress").value,
-            },
-          });
+              await context.db.Story.updateOne({
+                where: { id: item.id },
+                data: {
+                  ...content,
+                  statusLog: statusLog.next("imageInProgress").value,
+                },
+              });
 
-          Logger.info("Story image in progress", { id: item.id });
+              return content;
+            }
+            return {
+              title: item.title,
+              content: item.content,
+            };
+          })();
 
-          const image = await generateImage({
-            title: content.title,
-            prompt: item.imagePrompt,
-          });
+          if (!item.image) {
+            Logger.info("Story image in progress", { id: item.id });
 
-          Logger.info("Story image generated", { id: item.id });
+            const image = await generateImage({
+              title: content.title,
+              prompt: item.imagePrompt,
+            });
 
-          const upload = uploadImage(image);
+            Logger.info("Story image generated", { id: item.id });
 
-          await context.db.Story.updateOne({
-            where: { id: item.id },
-            data: {
-              image: upload,
-              status: "success",
-              statusLog: statusLog.next("success").value,
-            },
-          });
+            const upload = uploadImage(image);
 
-          Logger.info("Story created", { id: item.id });
+            await context.db.Story.updateOne({
+              where: { id: item.id },
+              data: {
+                image: upload,
+                status: "success",
+                statusLog: statusLog.next("success").value,
+              },
+            });
+
+            Logger.info("Story created", { id: item.id });
+          }
         } catch (error) {
           const exception = (() => {
             if (error instanceof StoryException) return error;
