@@ -6,7 +6,7 @@ import { allowAll } from "@keystone-6/core/access";
 import { LANGUAGE_OPTIONS } from "../lists.const";
 import { Session } from "../lists.types";
 
-export const Prompt = list<Lists.MoralLesson.TypeInfo<Session>>({
+export const Prompt = list<Lists.Prompt.TypeInfo<Session>>({
   access: allowAll,
   ui: {
     listView: {

@@ -7,7 +7,7 @@ import { allowAll } from "@keystone-6/core/access";
 import { LANGUAGE_OPTIONS } from "../lists.const";
 import { Session } from "../lists.types";
 
-export const PlaceOfEvent = list<Lists.MoralLesson.TypeInfo<Session>>({
+export const PlaceOfEvent = list<Lists.PlaceOfEvent.TypeInfo<Session>>({
   access: allowAll,
   ui: {
     listView: {
