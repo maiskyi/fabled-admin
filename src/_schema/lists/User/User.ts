@@ -22,9 +22,7 @@ export const User = list<Lists.User.TypeInfo<Session>>({
     isAdmin: checkbox({
       defaultValue: true,
     }),
-    firebaseUserId: text({
-      defaultValue: "",
-    }),
+
     createdAt: timestamp({
       defaultValue: { kind: "now" },
     }),
