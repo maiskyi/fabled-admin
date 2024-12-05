@@ -34,15 +34,6 @@ export const create: ListHooks<Lists.Story.TypeInfo> = {
 
               Logger.info("Story content generated", { id: item.id });
 
-              await context.db.Story.updateOne({
-                where: { id: item.id },
-                data: {
-                  title,
-                  content,
-                  statusLog: statusLog.next("imageInProgress").value,
-                },
-              });
-
               return { title, content, description };
             }
             return {
@@ -51,6 +42,15 @@ export const create: ListHooks<Lists.Story.TypeInfo> = {
               description: "",
             };
           })();
+
+          await context.db.Story.updateOne({
+            where: { id: item.id },
+            data: {
+              title: content.title,
+              content: content.content,
+              statusLog: statusLog.next("imageInProgress").value,
+            },
+          });
 
           if (!item.image) {
             Logger.info("Story image in progress", { id: item.id });
@@ -69,13 +69,19 @@ export const create: ListHooks<Lists.Story.TypeInfo> = {
               where: { id: item.id },
               data: {
                 image: upload,
-                status: "success",
-                statusLog: statusLog.next("success").value,
               },
             });
 
             Logger.info("Story created", { id: item.id });
           }
+
+          await context.db.Story.updateOne({
+            where: { id: item.id },
+            data: {
+              status: "success",
+              statusLog: statusLog.next("success").value,
+            },
+          });
         } catch (error) {
           const exception = (() => {
             if (error instanceof StoryException) return error;

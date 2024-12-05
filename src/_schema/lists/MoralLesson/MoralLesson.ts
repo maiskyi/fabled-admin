@@ -1,13 +1,30 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { Lists } from ".keystone/types";
 import { list } from "@keystone-6/core";
 import { text, timestamp, select, checkbox } from "@keystone-6/core/fields";
+import { allowAll } from "@keystone-6/core/access";
 import { LANGUAGE_OPTIONS } from "../lists.const";
-import { access } from "./access";
+import { Session } from "../lists.types";
 
-export const MoralLesson = list({
-  access,
+export const MoralLesson = list<Lists.MoralLesson.TypeInfo<Session>>({
+  access: allowAll,
   ui: {
     listView: {
       initialColumns: ["title", "language"],
+    },
+    itemView: {
+      defaultFieldMode: ({ session }) => {
+        if (session?.data?.isAdmin) {
+          return "edit";
+        }
+        return "read";
+      },
+    },
+    hideDelete: ({ session }) => {
+      return !session?.data?.isAdmin;
+    },
+    hideCreate: ({ session }) => {
+      return !session?.data?.isAdmin;
     },
   },
   fields: {

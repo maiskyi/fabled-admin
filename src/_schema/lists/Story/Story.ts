@@ -36,18 +36,38 @@ export const Story = list({
     }),
     parent: relationship({
       ref: "Story",
+      ui: {
+        createView: {
+          fieldMode: "hidden",
+        },
+        itemView: {
+          fieldMode: "read",
+        },
+      },
     }),
     prompt: relationship({
       ref: "Prompt",
+      ui: {
+        hideCreate: true,
+      },
     }),
     character: relationship({
       ref: "Character",
+      ui: {
+        hideCreate: true,
+      },
     }),
     placeOfEvent: relationship({
       ref: "PlaceOfEvent",
+      ui: {
+        hideCreate: true,
+      },
     }),
     moralLesson: relationship({
       ref: "MoralLesson",
+      ui: {
+        hideCreate: true,
+      },
     }),
     title: text({
       isIndexed: true,
@@ -84,34 +104,47 @@ export const Story = list({
       type: "enum",
       defaultValue: StoryStatus.InProgress,
       options: STATUS_OPTIONS,
+      ui: {
+        createView: {
+          fieldMode: "hidden",
+        },
+      },
     }),
     statusLog: multiselect({
       type: "enum",
       defaultValue: [StoryStatusLog.Initialized],
       options: STATUS_LOG_OPTIONS,
+      ui: {
+        createView: {
+          fieldMode: "hidden",
+        },
+      },
     }),
     contentPrompt: text({
-      validation: {
-        isRequired: true,
-      },
+      defaultValue: "contentPrompt",
       ui: {
         displayMode: "textarea",
+        createView: {
+          fieldMode: "hidden",
+        },
       },
     }),
     imagePrompt: text({
-      validation: {
-        isRequired: true,
-      },
+      defaultValue: "imagePrompt",
       ui: {
         displayMode: "textarea",
+        createView: {
+          fieldMode: "hidden",
+        },
       },
     }),
     message: text({
-      validation: {
-        isRequired: true,
-      },
+      defaultValue: "message",
       ui: {
         displayMode: "textarea",
+        createView: {
+          fieldMode: "hidden",
+        },
       },
     }),
     createdAt: timestamp({
