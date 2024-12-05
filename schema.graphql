@@ -684,6 +684,7 @@ type Prompt {
   textPrompt: String
   imagePrompt: String
   language: PromptLanguageType
+  isPublished: Boolean
   createdAt: DateTime
 }
 
@@ -705,6 +706,7 @@ input PromptWhereInput {
   textPrompt: StringFilter
   imagePrompt: StringFilter
   language: PromptLanguageTypeNullableFilter
+  isPublished: BooleanFilter
   createdAt: DateTimeNullableFilter
 }
 
@@ -722,6 +724,7 @@ input PromptOrderByInput {
   textPrompt: OrderDirection
   imagePrompt: OrderDirection
   language: OrderDirection
+  isPublished: OrderDirection
   createdAt: OrderDirection
 }
 
@@ -731,6 +734,7 @@ input PromptUpdateInput {
   textPrompt: String
   imagePrompt: String
   language: PromptLanguageType
+  isPublished: Boolean
   createdAt: DateTime
 }
 
@@ -745,6 +749,7 @@ input PromptCreateInput {
   textPrompt: String
   imagePrompt: String
   language: PromptLanguageType
+  isPublished: Boolean
   createdAt: DateTime
 }
 
