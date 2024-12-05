@@ -31,6 +31,7 @@ export const generateContent = async ({
               {
                 "title": "string",
                 "content": "string"
+                "description": "string" // short description of fairy tails up to 500 characters
               }
             `,
         },
@@ -41,8 +42,8 @@ export const generateContent = async ({
 
     if (result) {
       const json = result.replace(/```json|```/g, "").trim();
-      const { title, content } = JSON.parse(json);
-      return { content, title };
+      const { title, content, description } = JSON.parse(json);
+      return { content, title, description };
     }
 
     throw new StoryException({

@@ -8,6 +8,7 @@ import { GenerateImageInput } from "./generateImage.types";
 export const generateImage = async ({
   title,
   prompt: text,
+  description,
 }: GenerateImageInput) => {
   try {
     const client = new OpenAI();
@@ -16,6 +17,7 @@ export const generateImage = async ({
       text,
       {
         title,
+        description,
       },
       {
         tags: ["*=", "=*"],
