@@ -36,18 +36,35 @@ export const Story = list({
     }),
     parent: relationship({
       ref: "Story",
+      ui: {
+        createView: {
+          fieldMode: "hidden",
+        },
+      },
     }),
     prompt: relationship({
       ref: "Prompt",
+      ui: {
+        hideCreate: true,
+      },
     }),
     character: relationship({
       ref: "Character",
+      ui: {
+        hideCreate: true,
+      },
     }),
     placeOfEvent: relationship({
       ref: "PlaceOfEvent",
+      ui: {
+        hideCreate: true,
+      },
     }),
     moralLesson: relationship({
       ref: "MoralLesson",
+      ui: {
+        hideCreate: true,
+      },
     }),
     title: text({
       isIndexed: true,
@@ -91,27 +108,39 @@ export const Story = list({
       options: STATUS_LOG_OPTIONS,
     }),
     contentPrompt: text({
+      defaultValue: "contentPrompt",
       validation: {
         isRequired: true,
       },
       ui: {
         displayMode: "textarea",
+        createView: {
+          fieldMode: "hidden",
+        },
       },
     }),
     imagePrompt: text({
+      defaultValue: "imagePrompt",
       validation: {
         isRequired: true,
       },
       ui: {
         displayMode: "textarea",
+        createView: {
+          fieldMode: "hidden",
+        },
       },
     }),
     message: text({
+      defaultValue: "message",
       validation: {
         isRequired: true,
       },
       ui: {
         displayMode: "textarea",
+        createView: {
+          fieldMode: "hidden",
+        },
       },
     }),
     createdAt: timestamp({

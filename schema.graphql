@@ -7,6 +7,7 @@ type User {
   email: String
   password: PasswordState
   isAdmin: Boolean
+  firebaseUserId: String
   createdAt: DateTime
 }
 
@@ -29,6 +30,7 @@ input UserWhereInput {
   name: StringFilter
   email: StringFilter
   isAdmin: BooleanFilter
+  firebaseUserId: StringFilter
   createdAt: DateTimeNullableFilter
 }
 
@@ -98,6 +100,7 @@ input UserOrderByInput {
   name: OrderDirection
   email: OrderDirection
   isAdmin: OrderDirection
+  firebaseUserId: OrderDirection
   createdAt: OrderDirection
 }
 
@@ -111,6 +114,7 @@ input UserUpdateInput {
   email: String
   password: String
   isAdmin: Boolean
+  firebaseUserId: String
   createdAt: DateTime
 }
 
@@ -124,6 +128,7 @@ input UserCreateInput {
   email: String
   password: String
   isAdmin: Boolean
+  firebaseUserId: String
   createdAt: DateTime
 }
 
