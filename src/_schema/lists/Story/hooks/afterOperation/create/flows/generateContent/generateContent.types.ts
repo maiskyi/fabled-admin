@@ -5,4 +5,5 @@ export interface GenerateContentInput {
 export interface GenerateContentOutput {
   title: string;
   content: string;
+  description: string;
 }
