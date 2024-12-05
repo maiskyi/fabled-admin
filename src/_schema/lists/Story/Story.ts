@@ -40,6 +40,9 @@ export const Story = list({
         createView: {
           fieldMode: "hidden",
         },
+        itemView: {
+          fieldMode: "read",
+        },
       },
     }),
     prompt: relationship({
@@ -101,17 +104,24 @@ export const Story = list({
       type: "enum",
       defaultValue: StoryStatus.InProgress,
       options: STATUS_OPTIONS,
+      ui: {
+        createView: {
+          fieldMode: "hidden",
+        },
+      },
     }),
     statusLog: multiselect({
       type: "enum",
       defaultValue: [StoryStatusLog.Initialized],
       options: STATUS_LOG_OPTIONS,
+      ui: {
+        createView: {
+          fieldMode: "hidden",
+        },
+      },
     }),
     contentPrompt: text({
       defaultValue: "contentPrompt",
-      validation: {
-        isRequired: true,
-      },
       ui: {
         displayMode: "textarea",
         createView: {
@@ -121,9 +131,6 @@ export const Story = list({
     }),
     imagePrompt: text({
       defaultValue: "imagePrompt",
-      validation: {
-        isRequired: true,
-      },
       ui: {
         displayMode: "textarea",
         createView: {
@@ -133,9 +140,6 @@ export const Story = list({
     }),
     message: text({
       defaultValue: "message",
-      validation: {
-        isRequired: true,
-      },
       ui: {
         displayMode: "textarea",
         createView: {

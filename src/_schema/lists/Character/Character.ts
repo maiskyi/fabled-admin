@@ -13,7 +13,18 @@ export const Character = list<Lists.Character.TypeInfo<Session>>({
     listView: {
       initialColumns: ["title", "language"],
     },
-    isHidden: ({ session }) => {
+    itemView: {
+      defaultFieldMode: ({ session }) => {
+        if (session?.data?.isAdmin) {
+          return "edit";
+        }
+        return "read";
+      },
+    },
+    hideDelete: ({ session }) => {
+      return !session?.data?.isAdmin;
+    },
+    hideCreate: ({ session }) => {
       return !session?.data?.isAdmin;
     },
   },
