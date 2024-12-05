@@ -1,10 +1,18 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { Lists } from ".keystone/types";
 import { list } from "@keystone-6/core";
 import { text } from "@keystone-6/core/fields";
-import { access } from "./access";
+import { allowAll } from "@keystone-6/core/access";
+import { Session } from "../lists.types";
 
-export const Config = list({
+export const Config = list<Lists.Config.TypeInfo<Session>>({
   isSingleton: true,
-  access,
+  access: allowAll,
+  ui: {
+    isHidden: ({ session }) => {
+      return !session?.data?.isAdmin;
+    },
+  },
   fields: {
     privacyPolicyUrl: text({
       validation: {

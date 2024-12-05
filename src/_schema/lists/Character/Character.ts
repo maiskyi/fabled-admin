@@ -1,14 +1,20 @@
 import { list } from "@keystone-6/core";
 import { text, timestamp, select, checkbox } from "@keystone-6/core/fields";
 import { cloudinaryImage } from "@keystone-6/cloudinary";
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { Lists } from ".keystone/types";
+import { allowAll } from "@keystone-6/core/access";
 import { LANGUAGE_OPTIONS } from "../lists.const";
-import { access } from "./access";
+import { Session } from "../lists.types";
 
-export const Character = list({
-  access,
+export const Character = list<Lists.Character.TypeInfo<Session>>({
+  access: allowAll,
   ui: {
     listView: {
       initialColumns: ["title", "language"],
+    },
+    isHidden: ({ session }) => {
+      return !session?.data?.isAdmin;
     },
   },
   fields: {
