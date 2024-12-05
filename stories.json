@@ -2163,13 +2163,6 @@
       "prompt": "Write a fairy tale based on the following input parameters:\n- main character will be: Squirrel ;\n- moral lesson from the story: Don’t judge others by their appearance (Appearances can be deceiving; what’s inside is more important);\n- events of the story happened: On a majestic mountain.\n- content length: 1500 words\n- phrases excluded from title: Squirrel, On a majestic mountain"
     },
     {
-      "readTime": 5,
-      "character": "Rebbit",
-      "moralLesson": "Don’t be afraid to be yourself",
-      "placeOfEvent": "By a mystery lake",
-      "prompt": "Write a fairy tale based on the following input parameters:\n- main character will be: Rebbit ;\n- moral lesson from the story: Don’t be afraid to be yourself (Everyone is unique, and it’s important to accept yourself as you are);\n- events of the story happened: By a mystery lake.\n- content length: 750 words\n- phrases excluded from title: Rebbit, By a mystery lake"
-    },
-    {
       "readTime": 7,
       "character": "Rebbit",
       "moralLesson": "Don’t be afraid to be yourself",
@@ -4366,13 +4359,6 @@
       "moralLesson": "Don’t judge others by their appearance",
       "placeOfEvent": "On a majestic mountain",
       "prompt": "Write a fairy tale based on the following input parameters:\n- main character will be: Rebbit ;\n- moral lesson from the story: Don’t judge others by their appearance (Appearances can be deceiving; what’s inside is more important);\n- events of the story happened: On a majestic mountain.\n- content length: 1500 words\n- phrases excluded from title: Rebbit, On a majestic mountain"
-    },
-    {
-      "readTime": 5,
-      "character": "Mouse",
-      "moralLesson": "Don’t be afraid to be yourself",
-      "placeOfEvent": "By a mystery lake",
-      "prompt": "Write a fairy tale based on the following input parameters:\n- main character will be: Mouse ;\n- moral lesson from the story: Don’t be afraid to be yourself (Everyone is unique, and it’s important to accept yourself as you are);\n- events of the story happened: By a mystery lake.\n- content length: 750 words\n- phrases excluded from title: Mouse, By a mystery lake"
     },
     {
       "readTime": 7,
@@ -6573,13 +6559,6 @@
       "prompt": "Write a fairy tale based on the following input parameters:\n- main character will be: Mouse ;\n- moral lesson from the story: Don’t judge others by their appearance (Appearances can be deceiving; what’s inside is more important);\n- events of the story happened: On a majestic mountain.\n- content length: 1500 words\n- phrases excluded from title: Mouse, On a majestic mountain"
     },
     {
-      "readTime": 5,
-      "character": "Hedgehog",
-      "moralLesson": "Don’t be afraid to be yourself",
-      "placeOfEvent": "By a mystery lake",
-      "prompt": "Write a fairy tale based on the following input parameters:\n- main character will be: Hedgehog ;\n- moral lesson from the story: Don’t be afraid to be yourself (Everyone is unique, and it’s important to accept yourself as you are);\n- events of the story happened: By a mystery lake.\n- content length: 750 words\n- phrases excluded from title: Hedgehog, By a mystery lake"
-    },
-    {
       "readTime": 7,
       "character": "Hedgehog",
       "moralLesson": "Don’t be afraid to be yourself",
@@ -6613,13 +6592,6 @@
       "moralLesson": "Don’t be afraid to be yourself",
       "placeOfEvent": "In a royal castle",
       "prompt": "Write a fairy tale based on the following input parameters:\n- main character will be: Hedgehog ;\n- moral lesson from the story: Don’t be afraid to be yourself (Everyone is unique, and it’s important to accept yourself as you are);\n- events of the story happened: In a royal castle.\n- content length: 1500 words\n- phrases excluded from title: Hedgehog, In a royal castle"
-    },
-    {
-      "readTime": 5,
-      "character": "Hedgehog",
-      "moralLesson": "Don’t be afraid to be yourself",
-      "placeOfEvent": "In a sacred cave",
-      "prompt": "Write a fairy tale based on the following input parameters:\n- main character will be: Hedgehog ;\n- moral lesson from the story: Don’t be afraid to be yourself (Everyone is unique, and it’s important to accept yourself as you are);\n- events of the story happened: In a sacred cave.\n- content length: 750 words\n- phrases excluded from title: Hedgehog, In a sacred cave"
     },
     {
       "readTime": 7,
@@ -8778,13 +8750,6 @@
       "prompt": "Write a fairy tale based on the following input parameters:\n- main character will be: Hedgehog ;\n- moral lesson from the story: Don’t judge others by their appearance (Appearances can be deceiving; what’s inside is more important);\n- events of the story happened: On a majestic mountain.\n- content length: 1500 words\n- phrases excluded from title: Hedgehog, On a majestic mountain"
     },
     {
-      "readTime": 5,
-      "character": "Fox",
-      "moralLesson": "Don’t be afraid to be yourself",
-      "placeOfEvent": "By a mystery lake",
-      "prompt": "Write a fairy tale based on the following input parameters:\n- main character will be: Fox ;\n- moral lesson from the story: Don’t be afraid to be yourself (Everyone is unique, and it’s important to accept yourself as you are);\n- events of the story happened: By a mystery lake.\n- content length: 750 words\n- phrases excluded from title: Fox, By a mystery lake"
-    },
-    {
       "readTime": 7,
       "character": "Fox",
       "moralLesson": "Don’t be afraid to be yourself",
@@ -10353,13 +10318,6 @@
       "prompt": "Write a fairy tale based on the following input parameters:\n- main character will be: Fox ;\n- moral lesson from the story: Appreciate what you have (Wanting more can make you lose what you already have);\n- events of the story happened: In enchanted forest.\n- content length: 1500 words\n- phrases excluded from title: Fox, In enchanted forest"
     },
     {
-      "readTime": 5,
-      "character": "Fox",
-      "moralLesson": "Appreciate what you have",
-      "placeOfEvent": "On a magic tree",
-      "prompt": "Write a fairy tale based on the following input parameters:\n- main character will be: Fox ;\n- moral lesson from the story: Appreciate what you have (Wanting more can make you lose what you already have);\n- events of the story happened: On a magic tree.\n- content length: 750 words\n- phrases excluded from title: Fox, On a magic tree"
-    },
-    {
       "readTime": 7,
       "character": "Fox",
       "moralLesson": "Appreciate what you have",
@@ -10981,13 +10939,6 @@
       "moralLesson": "Don’t judge others by their appearance",
       "placeOfEvent": "On a majestic mountain",
       "prompt": "Write a fairy tale based on the following input parameters:\n- main character will be: Fox ;\n- moral lesson from the story: Don’t judge others by their appearance (Appearances can be deceiving; what’s inside is more important);\n- events of the story happened: On a majestic mountain.\n- content length: 1500 words\n- phrases excluded from title: Fox, On a majestic mountain"
-    },
-    {
-      "readTime": 5,
-      "character": "Deer",
-      "moralLesson": "Don’t be afraid to be yourself",
-      "placeOfEvent": "By a mystery lake",
-      "prompt": "Write a fairy tale based on the following input parameters:\n- main character will be: Deer ;\n- moral lesson from the story: Don’t be afraid to be yourself (Everyone is unique, and it’s important to accept yourself as you are);\n- events of the story happened: By a mystery lake.\n- content length: 750 words\n- phrases excluded from title: Deer, By a mystery lake"
     },
     {
       "readTime": 7,
@@ -13186,13 +13137,6 @@
       "moralLesson": "Don’t judge others by their appearance",
       "placeOfEvent": "On a majestic mountain",
       "prompt": "Write a fairy tale based on the following input parameters:\n- main character will be: Deer ;\n- moral lesson from the story: Don’t judge others by their appearance (Appearances can be deceiving; what’s inside is more important);\n- events of the story happened: On a majestic mountain.\n- content length: 1500 words\n- phrases excluded from title: Deer, On a majestic mountain"
-    },
-    {
-      "readTime": 5,
-      "character": "Wolf",
-      "moralLesson": "Don’t be afraid to be yourself",
-      "placeOfEvent": "By a mystery lake",
-      "prompt": "Write a fairy tale based on the following input parameters:\n- main character will be: Wolf ;\n- moral lesson from the story: Don’t be afraid to be yourself (Everyone is unique, and it’s important to accept yourself as you are);\n- events of the story happened: By a mystery lake.\n- content length: 750 words\n- phrases excluded from title: Wolf, By a mystery lake"
     },
     {
       "readTime": 7,
