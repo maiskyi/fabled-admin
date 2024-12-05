@@ -56,6 +56,7 @@ export const create: ListHooks<Lists.Story.TypeInfo> = {
             const image = await generateImage({
               title: content.title,
               prompt: item.imagePrompt,
+              content: item.content,
             });
 
             Logger.info("Story image generated", { id: item.id });
