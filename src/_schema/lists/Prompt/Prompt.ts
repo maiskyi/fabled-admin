@@ -1,7 +1,12 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { Lists } from ".keystone/types";
 import { list } from "@keystone-6/core";
-import { text, timestamp, select, checkbox } from "@keystone-6/core/fields";
+import {
+  text,
+  timestamp,
+  select,
+  // checkbox
+} from "@keystone-6/core/fields";
 import { allowAll } from "@keystone-6/core/access";
 import { LANGUAGE_OPTIONS } from "../lists.const";
 import { Session } from "../lists.types";
@@ -73,9 +78,9 @@ export const Prompt = list<Lists.Prompt.TypeInfo<Session>>({
         isRequired: true,
       },
     }),
-    isPublished: checkbox({
-      defaultValue: true,
-    }),
+    // isPublished: checkbox({
+    //   defaultValue: true,
+    // }),
     createdAt: timestamp({
       ui: {
         itemView: {
