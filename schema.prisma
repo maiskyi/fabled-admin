@@ -117,6 +117,7 @@ model Config {
   id                    Int    @id
   privacyPolicyUrl      String @default("")
   termsAndConditionsUrl String @default("")
+  migration1            Int?
 }
 
 enum StoryStatusType {
