@@ -757,6 +757,7 @@ type Config {
   id: ID!
   privacyPolicyUrl: String
   termsAndConditionsUrl: String
+  migration1: Int
 }
 
 input ConfigWhereUniqueInput {
@@ -770,17 +771,31 @@ input ConfigWhereInput {
   id: IDFilter
   privacyPolicyUrl: StringFilter
   termsAndConditionsUrl: StringFilter
+  migration1: IntNullableFilter
+}
+
+input IntNullableFilter {
+  equals: Int
+  in: [Int!]
+  notIn: [Int!]
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  not: IntNullableFilter
 }
 
 input ConfigOrderByInput {
   id: OrderDirection
   privacyPolicyUrl: OrderDirection
   termsAndConditionsUrl: OrderDirection
+  migration1: OrderDirection
 }
 
 input ConfigUpdateInput {
   privacyPolicyUrl: String
   termsAndConditionsUrl: String
+  migration1: Int
 }
 
 input ConfigUpdateArgs {
@@ -791,6 +806,7 @@ input ConfigUpdateArgs {
 input ConfigCreateInput {
   privacyPolicyUrl: String
   termsAndConditionsUrl: String
+  migration1: Int
 }
 
 """
