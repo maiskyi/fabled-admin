@@ -684,7 +684,6 @@ type Prompt {
   textPrompt: String
   imagePrompt: String
   language: PromptLanguageType
-  isPublished: Boolean
   createdAt: DateTime
 }
 
@@ -706,7 +705,6 @@ input PromptWhereInput {
   textPrompt: StringFilter
   imagePrompt: StringFilter
   language: PromptLanguageTypeNullableFilter
-  isPublished: BooleanFilter
   createdAt: DateTimeNullableFilter
 }
 
@@ -724,7 +722,6 @@ input PromptOrderByInput {
   textPrompt: OrderDirection
   imagePrompt: OrderDirection
   language: OrderDirection
-  isPublished: OrderDirection
   createdAt: OrderDirection
 }
 
@@ -734,7 +731,6 @@ input PromptUpdateInput {
   textPrompt: String
   imagePrompt: String
   language: PromptLanguageType
-  isPublished: Boolean
   createdAt: DateTime
 }
 
@@ -749,7 +745,6 @@ input PromptCreateInput {
   textPrompt: String
   imagePrompt: String
   language: PromptLanguageType
-  isPublished: Boolean
   createdAt: DateTime
 }
 
@@ -757,7 +752,6 @@ type Config {
   id: ID!
   privacyPolicyUrl: String
   termsAndConditionsUrl: String
-  migration1: Int
 }
 
 input ConfigWhereUniqueInput {
@@ -771,31 +765,17 @@ input ConfigWhereInput {
   id: IDFilter
   privacyPolicyUrl: StringFilter
   termsAndConditionsUrl: StringFilter
-  migration1: IntNullableFilter
-}
-
-input IntNullableFilter {
-  equals: Int
-  in: [Int!]
-  notIn: [Int!]
-  lt: Int
-  lte: Int
-  gt: Int
-  gte: Int
-  not: IntNullableFilter
 }
 
 input ConfigOrderByInput {
   id: OrderDirection
   privacyPolicyUrl: OrderDirection
   termsAndConditionsUrl: OrderDirection
-  migration1: OrderDirection
 }
 
 input ConfigUpdateInput {
   privacyPolicyUrl: String
   termsAndConditionsUrl: String
-  migration1: Int
 }
 
 input ConfigUpdateArgs {
@@ -806,7 +786,6 @@ input ConfigUpdateArgs {
 input ConfigCreateInput {
   privacyPolicyUrl: String
   termsAndConditionsUrl: String
-  migration1: Int
 }
 
 """
