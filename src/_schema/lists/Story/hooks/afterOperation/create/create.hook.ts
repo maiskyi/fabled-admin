@@ -28,18 +28,18 @@ export const create: ListHooks<Lists.Story.TypeInfo> = {
             if (!item.title && !item.content) {
               Logger.info("Story content in progress", { id: item.id });
 
-              const { title, content, description } = await generateContent({
+              const { title, content, illustration } = await generateContent({
                 prompt: item.contentPrompt,
               });
 
               Logger.info("Story content generated", { id: item.id });
 
-              return { title, content, description };
+              return { title, content, illustration };
             }
             return {
               title: item.title,
               content: item.content,
-              description: "",
+              illustration: "",
             };
           })();
 
@@ -56,9 +56,8 @@ export const create: ListHooks<Lists.Story.TypeInfo> = {
             Logger.info("Story image in progress", { id: item.id });
 
             const image = await generateImage({
-              title: content.title,
               prompt: item.imagePrompt,
-              description: content?.description,
+              illustration: content?.illustration,
             });
 
             Logger.info("Story image generated", { id: item.id });

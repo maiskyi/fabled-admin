@@ -6,9 +6,8 @@ import { StoryException } from "../../services/StoryException";
 import { GenerateImageInput } from "./generateImage.types";
 
 export const generateImage = async ({
-  title,
   prompt: text,
-  description,
+  illustration,
 }: GenerateImageInput) => {
   try {
     const client = new OpenAI();
@@ -16,11 +15,10 @@ export const generateImage = async ({
     const prompt = render(
       text,
       {
-        title,
-        description,
+        illustration,
       },
       {
-        tags: ["*=", "=*"],
+        tags: ["{{", "}}"],
       }
     );
 
