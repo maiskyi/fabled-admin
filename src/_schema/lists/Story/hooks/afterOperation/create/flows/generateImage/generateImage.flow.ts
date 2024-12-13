@@ -25,7 +25,7 @@ export const generateImage = async ({
     const response = await client.images.generate({
       prompt: prompt,
       n: 1,
-      size: "1024x1024",
+      size: "1024x1792",
       model: "dall-e-3",
       quality: "standard",
       response_format: "url",
