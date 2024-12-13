@@ -98,21 +98,26 @@ model PlaceOfEvent {
   title                   String                   @default("")
   emoji                   String                   @default("")
   image                   Json?
+  prompt                  Prompt?                  @relation("PlaceOfEvent_prompt", fields: [promptId], references: [id])
+  promptId                String?                  @map("prompt")
   language                PlaceOfEventLanguageType
   isPublished             Boolean                  @default(false)
   createdAt               DateTime?                @default(now())
   from_Story_placeOfEvent Story[]                  @relation("Story_placeOfEvent")
+
+  @@index([promptId])
 }
 
 model Prompt {
-  id                String             @id @default(cuid())
-  title             String             @default("")
-  message           String             @default("")
-  textPrompt        String             @default("")
-  imagePrompt       String             @default("")
-  language          PromptLanguageType
-  createdAt         DateTime?          @default(now())
-  from_Story_prompt Story[]            @relation("Story_prompt")
+  id                       String             @id @default(cuid())
+  title                    String             @default("")
+  message                  String             @default("")
+  textPrompt               String             @default("")
+  imagePrompt              String             @default("")
+  language                 PromptLanguageType
+  createdAt                DateTime?          @default(now())
+  from_Story_prompt        Story[]            @relation("Story_prompt")
+  from_PlaceOfEvent_prompt PlaceOfEvent[]     @relation("PlaceOfEvent_prompt")
 }
 
 model Config {

@@ -13,11 +13,13 @@
     "gen": "orval --config ./orval.config.js"
   },
   "dependencies": {
+    "@emotion/styled": "^11.14.0",
     "@graphql-tools/schema": "^10.0.6",
     "@keystone-6/auth": "^8.0.0",
     "@keystone-6/cloudinary": "^8.0.0",
     "@keystone-6/core": "^6.0.0",
     "@keystone-6/fields-document": "^9.0.0",
+    "@keystone-ui/core": "^5.0.2",
     "@sentry/node": "^8.34.0",
     "@sentry/profiling-node": "^8.34.0",
     "firebase-admin": "^12.7.0",

@@ -624,6 +624,7 @@ type PlaceOfEvent {
   title: String
   emoji: String
   image: CloudinaryImage_File
+  prompt: Prompt
   language: PlaceOfEventLanguageType
   isPublished: Boolean
   createdAt: DateTime
@@ -643,6 +644,7 @@ input PlaceOfEventWhereInput {
   NOT: [PlaceOfEventWhereInput!]
   id: IDFilter
   title: StringFilter
+  prompt: PromptWhereInput
   language: PlaceOfEventLanguageTypeNullableFilter
   isPublished: BooleanFilter
   createdAt: DateTimeNullableFilter
@@ -667,6 +669,7 @@ input PlaceOfEventUpdateInput {
   title: String
   emoji: String
   image: Upload
+  prompt: PromptRelateToOneForUpdateInput
   language: PlaceOfEventLanguageType
   isPublished: Boolean
   createdAt: DateTime
@@ -681,6 +684,7 @@ input PlaceOfEventCreateInput {
   title: String
   emoji: String
   image: Upload
+  prompt: PromptRelateToOneForCreateInput
   language: PlaceOfEventLanguageType
   isPublished: Boolean
   createdAt: DateTime
