@@ -1,7 +1,13 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { Lists } from ".keystone/types";
 import { list } from "@keystone-6/core";
-import { text, timestamp, select, checkbox } from "@keystone-6/core/fields";
+import {
+  text,
+  timestamp,
+  select,
+  checkbox,
+  relationship,
+} from "@keystone-6/core/fields";
 import { cloudinaryImage } from "@keystone-6/cloudinary";
 import { allowAll } from "@keystone-6/core/access";
 import { LANGUAGE_OPTIONS } from "../lists.const";
@@ -48,6 +54,12 @@ export const PlaceOfEvent = list<Lists.PlaceOfEvent.TypeInfo<Session>>({
         apiKey: process.env.CLOUDINARY_API_KEY,
         apiSecret: process.env.CLOUDINARY_API_SECRET,
         folder: `${process.env.CLOUDINARY_FOLDER_ROOT}/place-of-event`,
+      },
+    }),
+    prompt: relationship({
+      ref: "Prompt",
+      ui: {
+        hideCreate: true,
       },
     }),
     language: select({
