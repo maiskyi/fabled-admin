@@ -73,6 +73,7 @@ model Inquiry {
 model Character {
   id                   String                @id @default(cuid())
   title                String                @default("")
+  emoji                String                @default("")
   description          String                @default("")
   image                Json?
   language             CharacterLanguageType
@@ -84,6 +85,7 @@ model Character {
 model MoralLesson {
   id                     String                  @id @default(cuid())
   title                  String                  @default("")
+  emoji                  String                  @default("")
   description            String                  @default("")
   language               MoralLessonLanguageType
   isPublished            Boolean                 @default(false)
@@ -94,6 +96,7 @@ model MoralLesson {
 model PlaceOfEvent {
   id                      String                   @id @default(cuid())
   title                   String                   @default("")
+  emoji                   String                   @default("")
   image                   Json?
   language                PlaceOfEventLanguageType
   isPublished             Boolean                  @default(false)

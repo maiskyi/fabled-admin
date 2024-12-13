@@ -34,6 +34,14 @@ export const Character = list<Lists.Character.TypeInfo<Session>>({
         isRequired: true,
       },
     }),
+    emoji: text({
+      defaultValue: "",
+      validation: {
+        isRequired: true,
+      },
+      isFilterable: false,
+      isOrderable: false,
+    }),
     description: text({
       ui: {
         displayMode: "textarea",

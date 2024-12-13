@@ -33,6 +33,14 @@ export const MoralLesson = list<Lists.MoralLesson.TypeInfo<Session>>({
         isRequired: true,
       },
     }),
+    emoji: text({
+      defaultValue: "",
+      validation: {
+        isRequired: true,
+      },
+      isFilterable: false,
+      isOrderable: false,
+    }),
     description: text({
       ui: {
         displayMode: "textarea",
