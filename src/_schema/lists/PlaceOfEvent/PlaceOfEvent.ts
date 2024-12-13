@@ -34,6 +34,14 @@ export const PlaceOfEvent = list<Lists.PlaceOfEvent.TypeInfo<Session>>({
         isRequired: true,
       },
     }),
+    emoji: text({
+      defaultValue: "",
+      validation: {
+        isRequired: true,
+      },
+      isFilterable: false,
+      isOrderable: false,
+    }),
     image: cloudinaryImage({
       cloudinary: {
         cloudName: process.env.CLOUDINARY_CLOUD_NAME,

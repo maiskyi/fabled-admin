@@ -481,6 +481,7 @@ input InquiryCreateInput {
 type Character {
   id: ID!
   title: String
+  emoji: String
   description: String
   image: CloudinaryImage_File
   language: CharacterLanguageType
@@ -526,6 +527,7 @@ input CharacterOrderByInput {
 
 input CharacterUpdateInput {
   title: String
+  emoji: String
   description: String
   image: Upload
   language: CharacterLanguageType
@@ -540,6 +542,7 @@ input CharacterUpdateArgs {
 
 input CharacterCreateInput {
   title: String
+  emoji: String
   description: String
   image: Upload
   language: CharacterLanguageType
@@ -550,6 +553,7 @@ input CharacterCreateInput {
 type MoralLesson {
   id: ID!
   title: String
+  emoji: String
   description: String
   language: MoralLessonLanguageType
   isPublished: Boolean
@@ -594,6 +598,7 @@ input MoralLessonOrderByInput {
 
 input MoralLessonUpdateInput {
   title: String
+  emoji: String
   description: String
   language: MoralLessonLanguageType
   isPublished: Boolean
@@ -607,6 +612,7 @@ input MoralLessonUpdateArgs {
 
 input MoralLessonCreateInput {
   title: String
+  emoji: String
   description: String
   language: MoralLessonLanguageType
   isPublished: Boolean
@@ -616,6 +622,7 @@ input MoralLessonCreateInput {
 type PlaceOfEvent {
   id: ID!
   title: String
+  emoji: String
   image: CloudinaryImage_File
   language: PlaceOfEventLanguageType
   isPublished: Boolean
@@ -658,6 +665,7 @@ input PlaceOfEventOrderByInput {
 
 input PlaceOfEventUpdateInput {
   title: String
+  emoji: String
   image: Upload
   language: PlaceOfEventLanguageType
   isPublished: Boolean
@@ -671,6 +679,7 @@ input PlaceOfEventUpdateArgs {
 
 input PlaceOfEventCreateInput {
   title: String
+  emoji: String
   image: Upload
   language: PlaceOfEventLanguageType
   isPublished: Boolean
