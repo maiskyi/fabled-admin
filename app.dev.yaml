@@ -3,7 +3,7 @@ service: ks-dev
 instance_class: F1
 
 beta_settings:
-  cloud_sql_instances: fabled-976c8:us-east1:development
+  cloud_sql_instances: fabled-976c8:us-east1:production
 
 liveness_check:
   path: /api/health-check
