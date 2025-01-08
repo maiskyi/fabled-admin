@@ -1,6 +1,6 @@
 runtime: nodejs20
 service: ks-prod
-instance_class: F2
+instance_class: F1
 
 beta_settings:
   cloud_sql_instances: fabled-976c8:us-east1:production
@@ -15,7 +15,7 @@ liveness_check:
 
 automatic_scaling:
   min_instances: 1
-  max_instances: 1
+  max_instances: 2
 
 env_variables:
   SERVER_CORS_ORIGINS: "https://app.fabled.space,capacitor://localhost"
