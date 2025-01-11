@@ -32,6 +32,7 @@ model Feedback {
 model Story {
   id                String           @id @default(cuid())
   firebaseUserId    String           @default("")
+  deviceId          String           @default("")
   parent            Story?           @relation("Story_parent", fields: [parentId], references: [id])
   parentId          String?          @map("parent")
   prompt            Prompt?          @relation("Story_prompt", fields: [promptId], references: [id])
