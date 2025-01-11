@@ -196,6 +196,7 @@ input FeedbackCreateInput {
 type Story {
   id: ID!
   firebaseUserId: String
+  deviceId: String
   parent: Story
   prompt: Prompt
   character: Character
@@ -292,6 +293,7 @@ input StoryWhereInput {
   NOT: [StoryWhereInput!]
   id: IDFilter
   firebaseUserId: StringFilter
+  deviceId: StringFilter
   parent: StoryWhereInput
   prompt: PromptWhereInput
   character: CharacterWhereInput
@@ -317,6 +319,7 @@ input StoryStatusTypeNullableFilter {
 input StoryOrderByInput {
   id: OrderDirection
   firebaseUserId: OrderDirection
+  deviceId: OrderDirection
   title: OrderDirection
   content: OrderDirection
   readTime: OrderDirection
@@ -329,6 +332,7 @@ input StoryOrderByInput {
 
 input StoryUpdateInput {
   firebaseUserId: String
+  deviceId: String
   parent: StoryRelateToOneForUpdateInput
   prompt: PromptRelateToOneForUpdateInput
   character: CharacterRelateToOneForUpdateInput
@@ -386,6 +390,7 @@ input StoryUpdateArgs {
 
 input StoryCreateInput {
   firebaseUserId: String
+  deviceId: String
   parent: StoryRelateToOneForCreateInput
   prompt: PromptRelateToOneForCreateInput
   character: CharacterRelateToOneForCreateInput

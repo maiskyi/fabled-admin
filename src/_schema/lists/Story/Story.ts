@@ -34,6 +34,13 @@ export const Story = list({
         isRequired: true,
       },
     }),
+    deviceId: text({
+      ui: {
+        itemView: {
+          fieldMode: "read",
+        },
+      },
+    }),
     parent: relationship({
       ref: "Story",
       ui: {
