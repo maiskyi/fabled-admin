@@ -202,6 +202,9 @@ type Story {
   character: Character
   placeOfEvent: PlaceOfEvent
   moralLesson: MoralLesson
+  childName: String
+  childAge: Int
+  childGender: StoryChildGenderType
   title: String
   content: String
   image: CloudinaryImage_File
@@ -212,6 +215,11 @@ type Story {
   imagePrompt: String
   message: String
   createdAt: DateTime
+}
+
+enum StoryChildGenderType {
+  boy
+  girl
 }
 
 type CloudinaryImage_File {
@@ -299,6 +307,9 @@ input StoryWhereInput {
   character: CharacterWhereInput
   placeOfEvent: PlaceOfEventWhereInput
   moralLesson: MoralLessonWhereInput
+  childName: StringFilter
+  childAge: IntNullableFilter
+  childGender: StoryChildGenderTypeNullableFilter
   title: StringFilter
   content: StringFilter
   readTime: IntFilter
@@ -307,6 +318,24 @@ input StoryWhereInput {
   imagePrompt: StringFilter
   message: StringFilter
   createdAt: DateTimeNullableFilter
+}
+
+input IntNullableFilter {
+  equals: Int
+  in: [Int!]
+  notIn: [Int!]
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  not: IntNullableFilter
+}
+
+input StoryChildGenderTypeNullableFilter {
+  equals: StoryChildGenderType
+  in: [StoryChildGenderType!]
+  notIn: [StoryChildGenderType!]
+  not: StoryChildGenderTypeNullableFilter
 }
 
 input StoryStatusTypeNullableFilter {
@@ -320,6 +349,9 @@ input StoryOrderByInput {
   id: OrderDirection
   firebaseUserId: OrderDirection
   deviceId: OrderDirection
+  childName: OrderDirection
+  childAge: OrderDirection
+  childGender: OrderDirection
   title: OrderDirection
   content: OrderDirection
   readTime: OrderDirection
@@ -338,6 +370,9 @@ input StoryUpdateInput {
   character: CharacterRelateToOneForUpdateInput
   placeOfEvent: PlaceOfEventRelateToOneForUpdateInput
   moralLesson: MoralLessonRelateToOneForUpdateInput
+  childName: String
+  childAge: Int
+  childGender: StoryChildGenderType
   title: String
   content: String
   image: Upload
@@ -396,6 +431,9 @@ input StoryCreateInput {
   character: CharacterRelateToOneForCreateInput
   placeOfEvent: PlaceOfEventRelateToOneForCreateInput
   moralLesson: MoralLessonRelateToOneForCreateInput
+  childName: String
+  childAge: Int
+  childGender: StoryChildGenderType
   title: String
   content: String
   image: Upload

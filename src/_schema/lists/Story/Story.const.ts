@@ -3,7 +3,19 @@ import {
   StoryStatusLog,
   StoryExceptionCode,
   StoryStatus,
+  ChildGender,
 } from "./Story.types";
+
+export const CHILD_GENDER_OPTIONS = [
+  {
+    label: "Boy",
+    value: ChildGender.Boy,
+  },
+  {
+    label: "Girl",
+    value: ChildGender.Girl,
+  },
+];
 
 export const READ_TIME_OPTIONS = [
   {

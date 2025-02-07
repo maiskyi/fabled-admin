@@ -1,4 +1,4 @@
-import { Language } from "./lists.types";
+import { Language } from "./language.types";
 
 export const LANGUAGE_OPTIONS = [
   {

@@ -1,10 +1,10 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { Lists } from ".keystone/types";
 import { list } from "@keystone-6/core";
-import { text, timestamp, select, checkbox } from "@keystone-6/core/fields";
+import { text, timestamp, checkbox } from "@keystone-6/core/fields";
 import { allowAll } from "@keystone-6/core/access";
-import { LANGUAGE_OPTIONS } from "../lists.const";
 import { Session } from "../lists.types";
+import { language } from "../_fields/language";
 
 export const MoralLesson = list<Lists.MoralLesson.TypeInfo<Session>>({
   access: allowAll,
@@ -49,13 +49,8 @@ export const MoralLesson = list<Lists.MoralLesson.TypeInfo<Session>>({
         isRequired: true,
       },
     }),
-    language: select({
-      type: "enum",
-      options: LANGUAGE_OPTIONS,
-      validation: {
-        isRequired: true,
-      },
-    }),
+    // @ts-expect-error Correct
+    language,
     isPublished: checkbox(),
     createdAt: timestamp({
       ui: {

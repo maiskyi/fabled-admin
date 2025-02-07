@@ -5,6 +5,7 @@ import {
   timestamp,
   select,
   relationship,
+  integer,
 } from "@keystone-6/core/fields";
 import { cloudinaryImage } from "@keystone-6/cloudinary";
 import { allowAll } from "@keystone-6/core/access";
@@ -12,6 +13,7 @@ import {
   READ_TIME_OPTIONS,
   STATUS_LOG_OPTIONS,
   STATUS_OPTIONS,
+  CHILD_GENDER_OPTIONS,
 } from "./Story.const";
 import { StoryStatusLog, StoryStatus } from "./Story.types";
 import { hooks } from "./hooks";
@@ -74,6 +76,32 @@ export const Story = list({
       ref: "MoralLesson",
       ui: {
         hideCreate: true,
+      },
+    }),
+    childName: text({
+      isIndexed: true,
+      ui: {
+        itemView: {
+          fieldMode: "read",
+        },
+      },
+    }),
+    childAge: integer({
+      isIndexed: true,
+      ui: {
+        itemView: {
+          fieldMode: "read",
+        },
+      },
+    }),
+    childGender: select({
+      type: "enum",
+      isIndexed: true,
+      options: CHILD_GENDER_OPTIONS,
+      ui: {
+        itemView: {
+          fieldMode: "read",
+        },
       },
     }),
     title: text({

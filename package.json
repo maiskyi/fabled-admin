@@ -1,6 +1,6 @@
 {
   "name": "@fabled/admin",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "private": true,
   "scripts": {
     "act": "act -j deploy --secret-file .secrets --env-file .env --var-file .vars --container-architecture linux/amd64",

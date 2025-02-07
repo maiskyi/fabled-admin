@@ -30,36 +30,42 @@ model Feedback {
 }
 
 model Story {
-  id                String           @id @default(cuid())
-  firebaseUserId    String           @default("")
-  deviceId          String           @default("")
-  parent            Story?           @relation("Story_parent", fields: [parentId], references: [id])
-  parentId          String?          @map("parent")
-  prompt            Prompt?          @relation("Story_prompt", fields: [promptId], references: [id])
-  promptId          String?          @map("prompt")
-  character         Character?       @relation("Story_character", fields: [characterId], references: [id])
-  characterId       String?          @map("character")
-  placeOfEvent      PlaceOfEvent?    @relation("Story_placeOfEvent", fields: [placeOfEventId], references: [id])
-  placeOfEventId    String?          @map("placeOfEvent")
-  moralLesson       MoralLesson?     @relation("Story_moralLesson", fields: [moralLessonId], references: [id])
-  moralLessonId     String?          @map("moralLesson")
-  title             String           @default("")
-  content           String           @default("")
+  id                String                @id @default(cuid())
+  firebaseUserId    String                @default("")
+  deviceId          String                @default("")
+  parent            Story?                @relation("Story_parent", fields: [parentId], references: [id])
+  parentId          String?               @map("parent")
+  prompt            Prompt?               @relation("Story_prompt", fields: [promptId], references: [id])
+  promptId          String?               @map("prompt")
+  character         Character?            @relation("Story_character", fields: [characterId], references: [id])
+  characterId       String?               @map("character")
+  placeOfEvent      PlaceOfEvent?         @relation("Story_placeOfEvent", fields: [placeOfEventId], references: [id])
+  placeOfEventId    String?               @map("placeOfEvent")
+  moralLesson       MoralLesson?          @relation("Story_moralLesson", fields: [moralLessonId], references: [id])
+  moralLessonId     String?               @map("moralLesson")
+  childName         String                @default("")
+  childAge          Int?
+  childGender       StoryChildGenderType?
+  title             String                @default("")
+  content           String                @default("")
   image             Json?
   readTime          Int
-  status            StoryStatusType? @default(inprogress)
-  statusLog         Json             @default("[\"initialized\"]")
-  contentPrompt     String           @default("contentPrompt")
-  imagePrompt       String           @default("imagePrompt")
-  message           String           @default("message")
-  createdAt         DateTime?        @default(now())
-  from_Story_parent Story[]          @relation("Story_parent")
+  status            StoryStatusType?      @default(inprogress)
+  statusLog         Json                  @default("[\"initialized\"]")
+  contentPrompt     String                @default("contentPrompt")
+  imagePrompt       String                @default("imagePrompt")
+  message           String                @default("message")
+  createdAt         DateTime?             @default(now())
+  from_Story_parent Story[]               @relation("Story_parent")
 
   @@index([parentId])
   @@index([promptId])
   @@index([characterId])
   @@index([placeOfEventId])
   @@index([moralLessonId])
+  @@index([childName])
+  @@index([childAge])
+  @@index([childGender])
   @@index([title])
 }
 
@@ -126,6 +132,11 @@ model Config {
   id                    Int    @id
   privacyPolicyUrl      String @default("")
   termsAndConditionsUrl String @default("")
+}
+
+enum StoryChildGenderType {
+  boy
+  girl
 }
 
 enum StoryStatusType {
