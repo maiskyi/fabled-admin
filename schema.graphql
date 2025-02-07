@@ -204,7 +204,7 @@ type Story {
   moralLesson: MoralLesson
   childName: String
   childAge: Decimal
-  childGender: String
+  childGender: StoryChildGenderType
   title: String
   content: String
   image: CloudinaryImage_File
@@ -218,6 +218,11 @@ type Story {
 }
 
 scalar Decimal
+
+enum StoryChildGenderType {
+  boy
+  girl
+}
 
 type CloudinaryImage_File {
   id: ID
@@ -306,7 +311,7 @@ input StoryWhereInput {
   moralLesson: MoralLessonWhereInput
   childName: StringFilter
   childAge: DecimalNullableFilter
-  childGender: StringNullableFilter
+  childGender: StoryChildGenderTypeNullableFilter
   title: StringFilter
   content: StringFilter
   readTime: IntFilter
@@ -328,19 +333,11 @@ input DecimalNullableFilter {
   not: DecimalNullableFilter
 }
 
-input StringNullableFilter {
-  equals: String
-  in: [String!]
-  notIn: [String!]
-  lt: String
-  lte: String
-  gt: String
-  gte: String
-  contains: String
-  startsWith: String
-  endsWith: String
-  mode: QueryMode
-  not: StringNullableFilter
+input StoryChildGenderTypeNullableFilter {
+  equals: StoryChildGenderType
+  in: [StoryChildGenderType!]
+  notIn: [StoryChildGenderType!]
+  not: StoryChildGenderTypeNullableFilter
 }
 
 input StoryStatusTypeNullableFilter {
@@ -377,7 +374,7 @@ input StoryUpdateInput {
   moralLesson: MoralLessonRelateToOneForUpdateInput
   childName: String
   childAge: Decimal
-  childGender: String
+  childGender: StoryChildGenderType
   title: String
   content: String
   image: Upload
@@ -438,7 +435,7 @@ input StoryCreateInput {
   moralLesson: MoralLessonRelateToOneForCreateInput
   childName: String
   childAge: Decimal
-  childGender: String
+  childGender: StoryChildGenderType
   title: String
   content: String
   image: Upload

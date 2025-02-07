@@ -97,6 +97,7 @@ export const Story = list({
       },
     }),
     childGender: select({
+      type: "enum",
       isIndexed: true,
       options: CHILD_GENDER_OPTIONS,
       ui: {
