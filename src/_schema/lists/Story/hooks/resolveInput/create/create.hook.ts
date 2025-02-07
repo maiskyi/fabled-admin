@@ -53,8 +53,6 @@ export const create: ListHooks<Lists.Story.TypeInfo> = {
           scene: placeOfEvent?.title,
         }).replace(/<\/?[^>]+(>|$)/g, "");
 
-        console.log(contentPrompt);
-
         const imagePrompt = prompt?.imagePrompt || "";
 
         return merge({}, resolvedData, {
