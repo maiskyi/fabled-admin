@@ -4,14 +4,13 @@ import { list } from "@keystone-6/core";
 import {
   text,
   timestamp,
-  select,
   checkbox,
   relationship,
 } from "@keystone-6/core/fields";
 import { cloudinaryImage } from "@keystone-6/cloudinary";
 import { allowAll } from "@keystone-6/core/access";
-import { LANGUAGE_OPTIONS } from "../lists.const";
 import { Session } from "../lists.types";
+import { language } from "../_fields/language";
 
 export const PlaceOfEvent = list<Lists.PlaceOfEvent.TypeInfo<Session>>({
   access: allowAll,
@@ -62,13 +61,8 @@ export const PlaceOfEvent = list<Lists.PlaceOfEvent.TypeInfo<Session>>({
         hideCreate: true,
       },
     }),
-    language: select({
-      type: "enum",
-      options: LANGUAGE_OPTIONS,
-      validation: {
-        isRequired: true,
-      },
-    }),
+    // @ts-expect-error Correct
+    language,
     isPublished: checkbox(),
     createdAt: timestamp({
       ui: {

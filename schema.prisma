@@ -43,6 +43,9 @@ model Story {
   placeOfEventId    String?          @map("placeOfEvent")
   moralLesson       MoralLesson?     @relation("Story_moralLesson", fields: [moralLessonId], references: [id])
   moralLessonId     String?          @map("moralLesson")
+  childName         String           @default("")
+  childAge          Decimal?         @postgresql.Decimal(2, 0)
+  childGender       String?
   title             String           @default("")
   content           String           @default("")
   image             Json?
@@ -60,6 +63,9 @@ model Story {
   @@index([characterId])
   @@index([placeOfEventId])
   @@index([moralLessonId])
+  @@index([childName])
+  @@index([childAge])
+  @@index([childGender])
   @@index([title])
 }
 

@@ -27,3 +27,8 @@ export enum StoryReadTime {
   Min7 = 7,
   Min10 = 10,
 }
+
+export enum ChildGender {
+  Boy = "boy",
+  Girl = "girl",
+}
