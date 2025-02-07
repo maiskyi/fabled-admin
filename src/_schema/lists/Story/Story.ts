@@ -5,7 +5,7 @@ import {
   timestamp,
   select,
   relationship,
-  decimal,
+  integer,
 } from "@keystone-6/core/fields";
 import { cloudinaryImage } from "@keystone-6/cloudinary";
 import { allowAll } from "@keystone-6/core/access";
@@ -86,10 +86,8 @@ export const Story = list({
         },
       },
     }),
-    childAge: decimal({
+    childAge: integer({
       isIndexed: true,
-      precision: 2,
-      scale: 0,
       ui: {
         itemView: {
           fieldMode: "read",

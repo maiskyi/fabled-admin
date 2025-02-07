@@ -203,7 +203,7 @@ type Story {
   placeOfEvent: PlaceOfEvent
   moralLesson: MoralLesson
   childName: String
-  childAge: Decimal
+  childAge: Int
   childGender: StoryChildGenderType
   title: String
   content: String
@@ -216,8 +216,6 @@ type Story {
   message: String
   createdAt: DateTime
 }
-
-scalar Decimal
 
 enum StoryChildGenderType {
   boy
@@ -310,7 +308,7 @@ input StoryWhereInput {
   placeOfEvent: PlaceOfEventWhereInput
   moralLesson: MoralLessonWhereInput
   childName: StringFilter
-  childAge: DecimalNullableFilter
+  childAge: IntNullableFilter
   childGender: StoryChildGenderTypeNullableFilter
   title: StringFilter
   content: StringFilter
@@ -322,15 +320,15 @@ input StoryWhereInput {
   createdAt: DateTimeNullableFilter
 }
 
-input DecimalNullableFilter {
-  equals: Decimal
-  in: [Decimal!]
-  notIn: [Decimal!]
-  lt: Decimal
-  lte: Decimal
-  gt: Decimal
-  gte: Decimal
-  not: DecimalNullableFilter
+input IntNullableFilter {
+  equals: Int
+  in: [Int!]
+  notIn: [Int!]
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  not: IntNullableFilter
 }
 
 input StoryChildGenderTypeNullableFilter {
@@ -373,7 +371,7 @@ input StoryUpdateInput {
   placeOfEvent: PlaceOfEventRelateToOneForUpdateInput
   moralLesson: MoralLessonRelateToOneForUpdateInput
   childName: String
-  childAge: Decimal
+  childAge: Int
   childGender: StoryChildGenderType
   title: String
   content: String
@@ -434,7 +432,7 @@ input StoryCreateInput {
   placeOfEvent: PlaceOfEventRelateToOneForCreateInput
   moralLesson: MoralLessonRelateToOneForCreateInput
   childName: String
-  childAge: Decimal
+  childAge: Int
   childGender: StoryChildGenderType
   title: String
   content: String

@@ -40,6 +40,9 @@ export const create: ListHooks<Lists.Story.TypeInfo> = {
         }).replace(/<\/?[^>]+(>|$)/g, "");
 
         const contentPrompt = render(prompt?.textPrompt || "", {
+          childGender: resolvedData.childGender,
+          childName: resolvedData.childName,
+          childAge: resolvedData.childAge,
           character: character?.title,
           characterNote:
             character?.description && `(${character?.description})`,
@@ -49,6 +52,8 @@ export const create: ListHooks<Lists.Story.TypeInfo> = {
             moralLesson?.description && `(${moralLesson?.description})`,
           scene: placeOfEvent?.title,
         }).replace(/<\/?[^>]+(>|$)/g, "");
+
+        console.log(contentPrompt);
 
         const imagePrompt = prompt?.imagePrompt || "";
 
