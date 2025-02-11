@@ -809,6 +809,54 @@ input PromptCreateInput {
   createdAt: DateTime
 }
 
+type Lullaby {
+  id: ID!
+  title: String
+  mp3: FileFieldOutput
+}
+
+type FileFieldOutput {
+  filename: String!
+  filesize: Int!
+  url: String!
+}
+
+input LullabyWhereUniqueInput {
+  id: ID
+}
+
+input LullabyWhereInput {
+  AND: [LullabyWhereInput!]
+  OR: [LullabyWhereInput!]
+  NOT: [LullabyWhereInput!]
+  id: IDFilter
+  title: StringFilter
+}
+
+input LullabyOrderByInput {
+  id: OrderDirection
+  title: OrderDirection
+}
+
+input LullabyUpdateInput {
+  title: String
+  mp3: FileFieldInput
+}
+
+input FileFieldInput {
+  upload: Upload!
+}
+
+input LullabyUpdateArgs {
+  where: LullabyWhereUniqueInput!
+  data: LullabyUpdateInput!
+}
+
+input LullabyCreateInput {
+  title: String
+  mp3: FileFieldInput
+}
+
 type Config {
   id: ID!
   privacyPolicyUrl: String
@@ -903,6 +951,12 @@ type Mutation {
   updatePrompts(data: [PromptUpdateArgs!]!): [Prompt]
   deletePrompt(where: PromptWhereUniqueInput!): Prompt
   deletePrompts(where: [PromptWhereUniqueInput!]!): [Prompt]
+  createLullaby(data: LullabyCreateInput!): Lullaby
+  createLullabies(data: [LullabyCreateInput!]!): [Lullaby]
+  updateLullaby(where: LullabyWhereUniqueInput!, data: LullabyUpdateInput!): Lullaby
+  updateLullabies(data: [LullabyUpdateArgs!]!): [Lullaby]
+  deleteLullaby(where: LullabyWhereUniqueInput!): Lullaby
+  deleteLullabies(where: [LullabyWhereUniqueInput!]!): [Lullaby]
   createConfig(data: ConfigCreateInput!): Config
   createConfigs(data: [ConfigCreateInput!]!): [Config]
   updateConfig(where: ConfigWhereUniqueInput! = {id: 1}, data: ConfigUpdateInput!): Config
@@ -956,6 +1010,9 @@ type Query {
   prompt(where: PromptWhereUniqueInput!): Prompt
   prompts(where: PromptWhereInput! = {}, orderBy: [PromptOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: PromptWhereUniqueInput): [Prompt!]
   promptsCount(where: PromptWhereInput! = {}): Int
+  lullaby(where: LullabyWhereUniqueInput!): Lullaby
+  lullabies(where: LullabyWhereInput! = {}, orderBy: [LullabyOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: LullabyWhereUniqueInput): [Lullaby!]
+  lullabiesCount(where: LullabyWhereInput! = {}): Int
   config(where: ConfigWhereUniqueInput! = {id: 1}): Config
   configs(where: ConfigWhereInput! = {id: {equals: 1}}, orderBy: [ConfigOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: ConfigWhereUniqueInput): [Config!]
   configsCount(where: ConfigWhereInput! = {id: {equals: 1}}): Int

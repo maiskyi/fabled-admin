@@ -19,6 +19,10 @@ declare global {
       SENTRY_DNS: string;
       SERVER_CORS_ORIGINS: string;
       SESSION_SECRET: string;
+      AWS_S3_BUCKET_NAME: string;
+      AWS_S3_BUCKET_REGION: string;
+      AWS_S3_ACCESS_KEY: string;
+      AWS_S3_ACCESS_KEY_SECRET: string;
     }
   }
 }
