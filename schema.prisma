@@ -128,6 +128,15 @@ model Prompt {
   from_PlaceOfEvent_prompt PlaceOfEvent[]     @relation("PlaceOfEvent_prompt")
 }
 
+model Lullaby {
+  id           String    @id @default(cuid())
+  title        String    @default("")
+  mp3_filesize Int?
+  mp3_filename String?
+  isPublished  Boolean   @default(false)
+  createdAt    DateTime? @default(now())
+}
+
 model Config {
   id                    Int    @id
   privacyPolicyUrl      String @default("")

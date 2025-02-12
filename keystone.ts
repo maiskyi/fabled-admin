@@ -17,6 +17,19 @@ const origin = get(process.env, "SERVER_CORS_ORIGINS", "")
 
 export default withAuth(
   config({
+    storage: {
+      lullabies: {
+        kind: "s3",
+        type: "file",
+        bucketName: process.env.AWS_S3_BUCKET_NAME,
+        region: process.env.AWS_S3_BUCKET_REGION,
+        accessKeyId: process.env.AWS_S3_ACCESS_KEY,
+        secretAccessKey: process.env.AWS_S3_ACCESS_KEY_SECRET,
+        signed: {
+          expiry: 5000,
+        },
+      },
+    },
     server: {
       cors: {
         origin,
