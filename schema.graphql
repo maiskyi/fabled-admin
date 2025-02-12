@@ -813,6 +813,8 @@ type Lullaby {
   id: ID!
   title: String
   mp3: FileFieldOutput
+  isPublished: Boolean
+  createdAt: DateTime
 }
 
 type FileFieldOutput {
@@ -831,16 +833,22 @@ input LullabyWhereInput {
   NOT: [LullabyWhereInput!]
   id: IDFilter
   title: StringFilter
+  isPublished: BooleanFilter
+  createdAt: DateTimeNullableFilter
 }
 
 input LullabyOrderByInput {
   id: OrderDirection
   title: OrderDirection
+  isPublished: OrderDirection
+  createdAt: OrderDirection
 }
 
 input LullabyUpdateInput {
   title: String
   mp3: FileFieldInput
+  isPublished: Boolean
+  createdAt: DateTime
 }
 
 input FileFieldInput {
@@ -855,6 +863,8 @@ input LullabyUpdateArgs {
 input LullabyCreateInput {
   title: String
   mp3: FileFieldInput
+  isPublished: Boolean
+  createdAt: DateTime
 }
 
 type Config {

@@ -129,10 +129,12 @@ model Prompt {
 }
 
 model Lullaby {
-  id           String  @id @default(cuid())
-  title        String  @default("")
+  id           String    @id @default(cuid())
+  title        String    @default("")
   mp3_filesize Int?
   mp3_filename String?
+  isPublished  Boolean   @default(false)
+  createdAt    DateTime? @default(now())
 }
 
 model Config {
