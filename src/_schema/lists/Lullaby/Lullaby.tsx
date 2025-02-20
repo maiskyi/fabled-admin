@@ -18,6 +18,11 @@ export const Lullaby = list<Lists.Config.TypeInfo<Session>>({
         isRequired: true,
       },
     }),
+    tags: text({
+      validation: {
+        isRequired: true,
+      },
+    }),
     mp3: file({ storage: "lullabies" }),
     isPublished: checkbox(),
     createdAt: timestamp({

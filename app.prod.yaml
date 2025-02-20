@@ -14,8 +14,7 @@ liveness_check:
   initial_delay_sec: 10
 
 automatic_scaling:
-  min_instances: 1
-  max_instances: 2
+  max_instances: 1
 
 env_variables:
   SERVER_CORS_ORIGINS: "https://app.fabled.space,capacitor://localhost"

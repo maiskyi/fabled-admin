@@ -812,6 +812,7 @@ input PromptCreateInput {
 type Lullaby {
   id: ID!
   title: String
+  tags: String
   mp3: FileFieldOutput
   isPublished: Boolean
   createdAt: DateTime
@@ -833,6 +834,7 @@ input LullabyWhereInput {
   NOT: [LullabyWhereInput!]
   id: IDFilter
   title: StringFilter
+  tags: StringFilter
   isPublished: BooleanFilter
   createdAt: DateTimeNullableFilter
 }
@@ -840,12 +842,14 @@ input LullabyWhereInput {
 input LullabyOrderByInput {
   id: OrderDirection
   title: OrderDirection
+  tags: OrderDirection
   isPublished: OrderDirection
   createdAt: OrderDirection
 }
 
 input LullabyUpdateInput {
   title: String
+  tags: String
   mp3: FileFieldInput
   isPublished: Boolean
   createdAt: DateTime
@@ -862,6 +866,7 @@ input LullabyUpdateArgs {
 
 input LullabyCreateInput {
   title: String
+  tags: String
   mp3: FileFieldInput
   isPublished: Boolean
   createdAt: DateTime

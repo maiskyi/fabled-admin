@@ -50,16 +50,13 @@ jobs:
             CLOUDINARY_CLOUD_NAME=${{ secrets.CLOUDINARY_CLOUD_NAME }}
             CLOUDINARY_FOLDER_ROOT=${{ vars.CLOUDINARY_FOLDER_ROOT }}
             DATABASE_URL=${{ secrets.DATABASE_URL }}
-            GMAIL_EMAIL=${{ vars.GMAIL_EMAIL }}
-            GMAIL_PASSWORD=${{ secrets.GMAIL_PASSWORD }}
-            MAILER_FROM=${{ vars.MAILER_FROM }}
-            MAILER_TO=${{ vars.MAILER_TO }}
             OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}
             SENTRY_DNS=${{ secrets.SENTRY_DNS }}
             SESSION_SECRET=${{ secrets.SESSION_SECRET }}
-            REVENUECAT_API_HOST=${{ vars.REVENUECAT_API_HOST }}
-            REVENUECAT_API_KEY=${{ secrets.REVENUECAT_API_KEY }}
-            REVENUECAT_PROJECT_ID=${{ secrets.REVENUECAT_PROJECT_ID }}
+            AWS_S3_BUCKET_NAME=${{ vars.AWS_S3_BUCKET_NAME }}
+            AWS_S3_BUCKET_REGION=${{ vars.AWS_S3_BUCKET_REGION }}
+            AWS_S3_ACCESS_KEY=${{ secrets.AWS_S3_ACCESS_KEY }}
+            AWS_S3_ACCESS_KEY_SECRET=${{ secrets.AWS_S3_ACCESS_KEY_SECRET }}
 
       - name: Remove Cloud App Engine versions
         uses: Reviewable/appengine-remove-action@v2.1.2
